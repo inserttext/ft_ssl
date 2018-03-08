@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   base64.h                                           :+:      :+:    :+:   */
+/*   b64_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/04 14:55:54 by tingo             #+#    #+#             */
-/*   Updated: 2018/03/07 17:53:18 by tingo            ###   ########.fr       */
+/*   Created: 2018/03/07 12:54:04 by tingo             #+#    #+#             */
+/*   Updated: 2018/03/07 17:53:01 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BASE64_H
-# define BASE64_H
+#include "../includes/base64.h"
 
-# include "../includes/ft_ssl.h"
-
-#undef BUFF_SIZE
-#define BUFF_SIZE 76
-
-typedef	union	u_b64
+size_t b64_getline(char **store)
 {
-	struct {
-		uint32_t d:6;
-		uint32_t c:6;
-		uint32_t b:6;
-		uint32_t a:6;
-	};
-	uint32_t uint24;
-}				t_b64;
+	char	buf[BUFF_SIZE + 1];
+	char	*tmp;
 
-size_t b64_getline(char **store);
+	ft_bzero(buf, sizeof(buf));
+	while (read(STDIN_FILENO, buf, BUFF_SIZE) > 0)
+	{
+		tmp = *store;
+		*store = ft_strjoin(*store, buf);
+		free(tmp);
+		ft_bzero(buf, BUFF_SIZE);
+	}
+	return (ft_strlen(*store));
+}
 
-#endif
+
