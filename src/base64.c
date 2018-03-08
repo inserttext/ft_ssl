@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 03:01:36 by tingo             #+#    #+#             */
-/*   Updated: 2018/03/07 17:53:02 by tingo            ###   ########.fr       */
+/*   Updated: 2018/03/08 00:53:37 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	*b64_encode(const unsigned char *data, size_t i_len)
 {
 	char *out;
 	char *z;
-	t_b64 conv;
+	uint32_t val;
 	size_t o_len;
 	size_t i;
 
@@ -36,14 +36,14 @@ static char	*b64_encode(const unsigned char *data, size_t i_len)
 	z = out;
 	while (i < i_len)
 	{
-		conv.uint24 = 0;
-		conv.uint24 = conv.uint24 + i < i_len ? data[i++] : 0;
-		conv.uint24 = (conv.uint24 << 8) + (i < i_len ? data[i++] : 0);
-		conv.uint24 = (conv.uint24 << 8) + (i < i_len ? data[i++] : 0);
-		*z++ = g_b64encodingtable[conv.a & 0x3f];
-		*z++ = g_b64encodingtable[conv.b & 0x3f];
-		*z++ = g_b64encodingtable[conv.c & 0x3f];
-		*z++ = g_b64encodingtable[conv.d & 0x3f];
+		val = 0;
+		val = val + i < i_len ? data[i++] : 0;
+		val = (val << 8) + (i < i_len ? data[i++] : 0);
+		val = (val << 8) + (i < i_len ? data[i++] : 0);
+		*z++ = g_b64encodingtable[(val >> 3 * 6) & 0x3f];
+		*z++ = g_b64encodingtable[(val >> 2 * 6) & 0x3f];
+		*z++ = g_b64encodingtable[(val >> 1 * 6) & 0x3f];
+		*z++ = g_b64encodingtable[(val >> 0 * 6) & 0x3f];
 	}
 	i = 0;
 	while (i < (size_t)mod_table[i_len % 3])
