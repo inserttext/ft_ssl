@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   m_error.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/04 01:47:28 by tingo             #+#    #+#             */
-/*   Updated: 2018/03/09 12:01:52 by tingo            ###   ########.fr       */
+/*   Created: 2018/03/14 01:11:10 by tingo             #+#    #+#             */
+/*   Updated: 2018/03/14 01:11:15 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ssl.h"
 
-int main(int argc, char **argv)
+void	m_usage()
 {
-	if (argc > 1)
-	{
-		if (m_strategy(&argv[1]) < 0)
-			m_invalidarg(argv[1]);
-	}
-	else
-		m_usage();
-	return (0);
+	ft_printf("usage: ft_ssl command [command opts] [command args]\n");
+}
+
+void	m_invalidarg(char *arg)
+{
+	ft_printf(
+			"ft_ssl: Error: '%s' is an invalid command.\n"
+			"\n"
+			"Standard Commands:\n"
+			"\n"
+			"Message Digest Commands:\n"
+			"\n"
+			"Cipher Commands:\n"
+			"base64\n", arg);
 }

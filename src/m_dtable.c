@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 02:37:06 by tingo             #+#    #+#             */
-/*   Updated: 2018/03/04 14:45:55 by tingo            ###   ########.fr       */
+/*   Updated: 2018/03/09 12:01:47 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static const t_dtable g_mdtable[] = {
 	{"base64", &base64}
 };
 
-int	m_strategy(int amax, char **cmd)
+int	m_strategy(char **cmd)
 {
 	int i;
 
@@ -24,7 +24,7 @@ int	m_strategy(int amax, char **cmd)
 	while (i < 1)
 	{
 		if (!(ft_strcmp(cmd[0], g_mdtable[i].name)))
-			return (g_mdtable[i].f(amax, &cmd[1]));
+			return (g_mdtable[i].f(&cmd[1]));
 		i++;
 	}
 	return (-1);

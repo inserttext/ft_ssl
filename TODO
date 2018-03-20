@@ -1,0 +1,6 @@
+base64:
+  - Add flags ("-e", "-d", "-i", "-o")
+  - Add read and write to file
+
+des:
+  - Add bare, ecb, and cbt versions

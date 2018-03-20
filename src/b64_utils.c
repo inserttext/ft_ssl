@@ -6,19 +6,23 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 12:54:04 by tingo             #+#    #+#             */
-/*   Updated: 2018/03/07 17:53:01 by tingo            ###   ########.fr       */
+/*   Updated: 2018/03/20 13:34:54 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/base64.h"
+#include <sys/stat.h>
 
-size_t b64_getline(char **store)
+#define OSTATE O_CREAT | O_TRUNC | O_WRONLY
+#define CFLAGS S_IRUSR | S_IWUSR
+
+size_t b64_getline(int fd, char **store)
 {
 	char	buf[BUFF_SIZE + 1];
 	char	*tmp;
 
-	ft_bzero(buf, sizeof(buf));
-	while (read(STDIN_FILENO, buf, BUFF_SIZE) > 0)
+	ft_bzero(buf, BUFF_SIZE + 1);
+	while (read(fd, buf, BUFF_SIZE) > 0)
 	{
 		tmp = *store;
 		*store = ft_strjoin(*store, buf);
@@ -28,4 +32,30 @@ size_t b64_getline(char **store)
 	return (ft_strlen(*store));
 }
 
+int b64_parse_args(char **args, int *fd_in, int *fd_out)
+{
+	int ret;
 
+	ret = 0;
+	while (*args && (*args)[0] == '-')
+	{
+		if ((*args)[1] == 'e')
+			ret = 0;
+		else if ((*args)[1] == 'd')
+			ret = 1;
+		else if (!ft_strcmp(*args, "-in"))
+		{
+			if ((*fd_in = open(*(++args), O_RDONLY)) < 3)
+				b64_invalidin(*args);
+		}
+		else if (!ft_strcmp(*args, "-out"))
+		{
+			if ((*fd_out = open(*(++args), OSTATE, CFLAGS)) < 0)
+				b64_invalidout(*args);
+		}
+		else
+
+		args++;
+	}
+	return (ret);
+}

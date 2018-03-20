@@ -1,0 +1,284 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ALIGN	libft/src/ft_bzero.c	15;"	d	file:
+ALIGN	libft/src/ft_memcpy.c	15;"	d	file:
+ALIGN	libft/src/ft_memset.c	15;"	d	file:
+ALIGN	libft/src/ft_strcpy.c	15;"	d	file:
+ALIGN	libft/src/ft_strlen.c	15;"	d	file:
+ALT_FORM	libft/includes/ft_printf.h	36;"	d
+BARE	libft/includes/ft_printf.h	/^	BARE, LPRE, LLPRE, HPRE, HHPRE, ZTPRE, JPRE,$/;"	e	enum:e_states
+BASE64_H	includes/base64.h	14;"	d
+BUFF_SIZE	includes/base64.h	18;"	d
+BUFF_SIZE	includes/base64.h	19;"	d
+BUFF_SIZE	libft/includes/ft_getline.h	18;"	d
+BUF_SIZE	libft/includes/ft_printf.h	28;"	d
+BUF_SIZE	libft/includes/ft_printf.h	30;"	d
+CC	Makefile	/^CC     = gcc$/;"	m
+CC	libft/Makefile	/^CC     = gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -Wall -Werror -Wextra$/;"	m
+CFLAGS	libft/Makefile	/^CFLAGS = -Wall -Werror -Wextra$/;"	m
+CHAR	libft/includes/ft_printf.h	/^	SHORT, USHORT, CHAR, UCHAR,$/;"	e	enum:e_states
+DirectoryOfThisScript	.ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f
+DirectoryOfThisScript	libft/.ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f
+FLAGMASK	libft/includes/ft_printf.h	43;"	d
+FT_GETLINE_H	libft/includes/ft_getline.h	14;"	d
+FT_PRINTF_H	libft/includes/ft_printf.h	14;"	d
+FT_SSL_H	includes/ft_ssl.h	14;"	d
+FlagsForFile	.ycm_extra_conf.py	/^def FlagsForFile( filename, **kwargs ):$/;"	f
+FlagsForFile	libft/.ycm_extra_conf.py	/^def FlagsForFile( filename, **kwargs ):$/;"	f
+GROUPED	libft/includes/ft_printf.h	41;"	d
+GetCompilationInfoForFile	.ycm_extra_conf.py	/^def GetCompilationInfoForFile( filename ):$/;"	f
+GetCompilationInfoForFile	libft/.ycm_extra_conf.py	/^def GetCompilationInfoForFile( filename ):$/;"	f
+HASZERO	libft/src/ft_strcpy.c	16;"	d	file:
+HASZERO	libft/src/ft_strlen.c	16;"	d	file:
+HHPRE	libft/includes/ft_printf.h	/^	BARE, LPRE, LLPRE, HPRE, HHPRE, ZTPRE, JPRE,$/;"	e	enum:e_states
+HPRE	libft/includes/ft_printf.h	/^	BARE, LPRE, LLPRE, HPRE, HHPRE, ZTPRE, JPRE,$/;"	e	enum:e_states
+IDIR	Makefile	/^IDIR   = includes$/;"	m
+IDIR	libft/Makefile	/^IDIR   = includes$/;"	m
+IMAX	libft/includes/ft_printf.h	/^	LLONG, SIZET, IMAX, UMAX, PDIFF, UIPTR,$/;"	e	enum:e_states
+INT	libft/includes/ft_printf.h	/^	PTR, INT, UINT, ULLONG,$/;"	e	enum:e_states
+IsHeaderFile	.ycm_extra_conf.py	/^def IsHeaderFile( filename ):$/;"	f
+IsHeaderFile	libft/.ycm_extra_conf.py	/^def IsHeaderFile( filename ):$/;"	f
+JPRE	libft/includes/ft_printf.h	/^	BARE, LPRE, LLPRE, HPRE, HHPRE, ZTPRE, JPRE,$/;"	e	enum:e_states
+LDIR	Makefile	/^LDIR   = libft$/;"	m
+LEFT_ADJ	libft/includes/ft_printf.h	38;"	d
+LIBFT_H	libft/includes/libft.h	14;"	d
+LLONG	libft/includes/ft_printf.h	/^	LLONG, SIZET, IMAX, UMAX, PDIFF, UIPTR,$/;"	e	enum:e_states
+LLPRE	libft/includes/ft_printf.h	/^	BARE, LPRE, LLPRE, HPRE, HHPRE, ZTPRE, JPRE,$/;"	e	enum:e_states
+LONG	libft/includes/ft_printf.h	/^	LONG, ULONG,$/;"	e	enum:e_states
+LPRE	libft/includes/ft_printf.h	/^	BARE, LPRE, LLPRE, HPRE, HHPRE, ZTPRE, JPRE,$/;"	e	enum:e_states
+MARK_POS	libft/includes/ft_printf.h	40;"	d
+MAX	libft/includes/ft_printf.h	23;"	d
+MAX	libft/includes/libft.h	32;"	d
+MAXSTATE	libft/includes/ft_printf.h	/^	MAXSTATE$/;"	e	enum:e_states
+MIN	libft/includes/ft_printf.h	24;"	d
+MIN	libft/includes/libft.h	33;"	d
+NAME	Makefile	/^NAME   = ft_ssl$/;"	m
+NAME	libft/Makefile	/^NAME   = libft.a$/;"	m
+NOARG	libft/includes/ft_printf.h	/^	NOARG,$/;"	e	enum:e_states
+OBJ	Makefile	/^OBJ    = $(patsubst %,$(ODIR)\/%,$(_OBJ))$/;"	m
+OBJ	libft/Makefile	/^OBJ    = $(patsubst %,$(ODIR)\/%,$(_OBJ))$/;"	m
+ODIR	Makefile	/^ODIR   = obj$/;"	m
+ODIR	libft/Makefile	/^ODIR   = obj$/;"	m
+OOB	libft/includes/ft_printf.h	25;"	d
+PAD_POS	libft/includes/ft_printf.h	39;"	d
+PDIFF	libft/includes/ft_printf.h	/^	LLONG, SIZET, IMAX, UMAX, PDIFF, UIPTR,$/;"	e	enum:e_states
+PSDIR	libft/Makefile	/^PSDIR  = src\/ft_printf$/;"	m
+PTR	libft/includes/ft_printf.h	/^	PTR, INT, UINT, ULLONG,$/;"	e	enum:e_states
+S	libft/includes/ft_printf.h	61;"	d
+SDIR	Makefile	/^SDIR   = src$/;"	m
+SDIR	libft/Makefile	/^SDIR   = src$/;"	m
+SHORT	libft/includes/ft_printf.h	/^	SHORT, USHORT, CHAR, UCHAR,$/;"	e	enum:e_states
+SIZET	libft/includes/ft_printf.h	/^	LLONG, SIZET, IMAX, UMAX, PDIFF, UIPTR,$/;"	e	enum:e_states
+SOURCE_EXTENSIONS	.ycm_extra_conf.py	/^SOURCE_EXTENSIONS = [ '.c' ]$/;"	v
+SOURCE_EXTENSIONS	libft/.ycm_extra_conf.py	/^SOURCE_EXTENSIONS = [ '.c' ]$/;"	v
+SRC	Makefile	/^SRC    = $(patsubst %,$(SDIR)\/%,$(_SRC))$/;"	m
+SRC	libft/Makefile	/^SRC    = $(patsubst %,$(SDIR)\/%,$(_SRC))$/;"	m
+STOP	libft/includes/ft_printf.h	/^	STOP,$/;"	e	enum:e_states
+SWAP	libft/includes/libft.h	34;"	d
+UCHAR	libft/includes/ft_printf.h	/^	SHORT, USHORT, CHAR, UCHAR,$/;"	e	enum:e_states
+UINT	libft/includes/ft_printf.h	/^	PTR, INT, UINT, ULLONG,$/;"	e	enum:e_states
+UIPTR	libft/includes/ft_printf.h	/^	LLONG, SIZET, IMAX, UMAX, PDIFF, UIPTR,$/;"	e	enum:e_states
+ULLONG	libft/includes/ft_printf.h	/^	PTR, INT, UINT, ULLONG,$/;"	e	enum:e_states
+ULONG	libft/includes/ft_printf.h	/^	LONG, ULONG,$/;"	e	enum:e_states
+UMAX	libft/includes/ft_printf.h	/^	LLONG, SIZET, IMAX, UMAX, PDIFF, UIPTR,$/;"	e	enum:e_states
+USHORT	libft/includes/ft_printf.h	/^	SHORT, USHORT, CHAR, UCHAR,$/;"	e	enum:e_states
+ZERO_PAD	libft/includes/ft_printf.h	37;"	d
+ZTPRE	libft/includes/ft_printf.h	/^	BARE, LPRE, LLPRE, HPRE, HHPRE, ZTPRE, JPRE,$/;"	e	enum:e_states
+_OBJ	Makefile	/^_OBJ   = $(_SRC:.c=.o)$/;"	m
+_OBJ	libft/Makefile	/^_OBJ   = $(_SRC:.c=.o)$/;"	m
+_PSRC	libft/Makefile	/^_PSRC  = core.c \\$/;"	m
+_SRC	Makefile	/^_SRC   =$/;"	m
+_SRC	libft/Makefile	/^_SRC   = ft_atoi.c \\$/;"	m
+a	libft/includes/ft_printf.h	/^	char		*a;$/;"	m	struct:s_print
+arg	libft/includes/ft_printf.h	/^	t_arg		arg;$/;"	m	struct:s_print
+b64_encode	src/b64_encode.c	/^char	*b64_encode(const unsigned char *data, size_t i_len, size_t *o_len)$/;"	f
+b64_getline	src/b64_utils.c	/^size_t b64_getline(int fd, char **store)$/;"	f
+b64_invalidin	src/b64_error.c	/^void	b64_invalidin(char *file)$/;"	f
+b64_invalidout	src/b64_error.c	/^void	b64_invalidout(char *file)$/;"	f
+b64_parse_args	src/b64_utils.c	/^int b64_parse_args(char **args, int *fd_in, int *fd_out)$/;"	f
+base64	src/base64.c	/^int	base64(char **args)$/;"	f
+buf	libft/includes/ft_printf.h	/^	char		buf[BUF_SIZE];$/;"	m	struct:s_print
+cnt	libft/includes/ft_printf.h	/^	int			cnt;$/;"	m	struct:s_print
+compilation_database_folder	.ycm_extra_conf.py	/^compilation_database_folder = ''$/;"	v
+compilation_database_folder	libft/.ycm_extra_conf.py	/^compilation_database_folder = ''$/;"	v
+content	libft/includes/libft.h	/^	void			*content;$/;"	m	struct:s_list
+content_size	libft/includes/libft.h	/^	size_t			content_size;$/;"	m	struct:s_list
+database	.ycm_extra_conf.py	/^  database = None$/;"	v
+database	.ycm_extra_conf.py	/^  database = ycm_core.CompilationDatabase( compilation_database_folder )$/;"	v
+database	libft/.ycm_extra_conf.py	/^  database = None$/;"	v
+database	libft/.ycm_extra_conf.py	/^  database = ycm_core.CompilationDatabase( compilation_database_folder )$/;"	v
+e_states	libft/includes/ft_printf.h	/^enum	e_states$/;"	g
+f	includes/ft_ssl.h	/^	int			(*f)(char **arg);$/;"	m	struct:s_dtable
+f	libft/includes/ft_printf.h	/^	int			f;$/;"	m	struct:s_print
+f	libft/includes/ft_printf.h	/^	int (*f)(t_print *var);$/;"	m	struct:s_dtable
+fl	libft/includes/ft_printf.h	/^	unsigned	fl;$/;"	m	struct:s_print
+fl_b	libft/src/ft_printf/flag2.c	/^int			fl_b(t_print *var)$/;"	f
+fl_bc	libft/src/ft_printf/flag.c	/^int	fl_bc(t_print *var)$/;"	f
+fl_bs	libft/src/ft_printf/flag.c	/^int	fl_bs(t_print *var)$/;"	f
+fl_c	libft/src/ft_printf/flag.c	/^int	fl_c(t_print *var)$/;"	f
+fl_d	libft/src/ft_printf/flag2.c	/^int			fl_d(t_print *var)$/;"	f
+fl_n	libft/src/ft_printf/flag3.c	/^int	fl_n(t_print *var)$/;"	f
+fl_o	libft/src/ft_printf/flag2.c	/^int			fl_o(t_print *var)$/;"	f
+fl_p	libft/src/ft_printf/flag.c	/^int	fl_p(t_print *var)$/;"	f
+fl_s	libft/src/ft_printf/flag.c	/^int	fl_s(t_print *var)$/;"	f
+fl_u	libft/src/ft_printf/flag2.c	/^int			fl_u(t_print *var)$/;"	f
+fl_x	libft/src/ft_printf/flag2.c	/^int			fl_x(t_print *var)$/;"	f
+flag_core	libft/src/ft_printf/core.c	/^int		flag_core(t_print *var, va_list *ap)$/;"	f
+flags	.ycm_extra_conf.py	/^flags = [$/;"	v
+flags	libft/.ycm_extra_conf.py	/^flags = [$/;"	v
+fmt	libft/includes/ft_printf.h	/^	const char	*fmt;$/;"	m	struct:s_print
+fmt_b	libft/src/ft_printf/format.c	/^char	*fmt_b(uintmax_t x, char *s)$/;"	f
+fmt_o	libft/src/ft_printf/format.c	/^char	*fmt_o(uintmax_t x, char *s)$/;"	f
+fmt_u	libft/src/ft_printf/format.c	/^char	*fmt_u(uintmax_t x, char *s)$/;"	f
+fmt_x	libft/src/ft_printf/format.c	/^char	*fmt_x(uintmax_t x, char *s, int lower)$/;"	f
+fn_unsigned	libft/src/ft_printf/flag2.c	/^static int	fn_unsigned(t_print *var)$/;"	f	file:
+four_byte	libft/src/ft_wctomb.c	/^static size_t	four_byte(char *s, wchar_t wc)$/;"	f	file:
+ft_atoi	libft/src/ft_atoi.c	/^int			ft_atoi(register const char *c)$/;"	f
+ft_bzero	libft/src/ft_bzero.c	/^void	ft_bzero(void *src, size_t len)$/;"	f
+ft_count	libft/src/ft_strsplit.c	/^static size_t	ft_count(const char *s, char c)$/;"	f	file:
+ft_count_digits	libft/src/ft_itoa.c	/^static size_t	ft_count_digits(int nbr, int base)$/;"	f	file:
+ft_fprintf	libft/src/ft_printf/ft_fprintf.c	/^int		ft_fprintf(int f, const char *format, ...)$/;"	f
+ft_getline	libft/src/ft_getline.c	/^int ft_getline(int fd, char **line)$/;"	f
+ft_isalnum	libft/src/ft_isalnum.c	/^int		ft_isalnum(int c)$/;"	f
+ft_isalpha	libft/src/ft_isalpha.c	/^int		ft_isalpha(int c)$/;"	f
+ft_isascii	libft/src/ft_isascii.c	/^int		ft_isascii(int c)$/;"	f
+ft_isdigit	libft/src/ft_isdigit.c	/^int		ft_isdigit(int c)$/;"	f
+ft_isprint	libft/src/ft_isprint.c	/^int		ft_isprint(int c)$/;"	f
+ft_isspace	libft/src/ft_isspace.c	/^int		ft_isspace(int c)$/;"	f
+ft_iswspace	libft/src/ft_strtrim.c	/^static int	ft_iswspace(const char c)$/;"	f	file:
+ft_itoa	libft/src/ft_itoa.c	/^char			*ft_itoa(int nbr)$/;"	f
+ft_itoabase	libft/src/ft_itoa.c	/^char			*ft_itoabase(int nbr, int base)$/;"	f
+ft_lstadd	libft/src/ft_lstadd.c	/^void	ft_lstadd(t_list **alst, t_list *new)$/;"	f
+ft_lstdel	libft/src/ft_lstdel.c	/^void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))$/;"	f
+ft_lstdelone	libft/src/ft_lstdel.c	/^void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))$/;"	f
+ft_lstiter	libft/src/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))$/;"	f
+ft_lstmap	libft/src/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))$/;"	f
+ft_lstnew	libft/src/ft_lstnew.c	/^t_list	*ft_lstnew(void const *content, size_t content_size)$/;"	f
+ft_memalloc	libft/src/ft_memalloc.c	/^void	*ft_memalloc(size_t size)$/;"	f
+ft_memccpy	libft/src/ft_memccpy.c	/^void	*ft_memccpy(void *dst, const void *src, int c, size_t n)$/;"	f
+ft_memchr	libft/src/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
+ft_memcmp	libft/src/ft_memcmp.c	/^int		ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
+ft_memcpy	libft/src/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t len)$/;"	f
+ft_memdel	libft/src/ft_memdel.c	/^void	ft_memdel(void **ap)$/;"	f
+ft_memjoin	libft/src/ft_memjoin.c	/^void	*ft_memjoin(void *p1, size_t sp1, void *p2, size_t sp2)$/;"	f
+ft_memmove	libft/src/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f
+ft_memset	libft/src/ft_memset.c	/^void	*ft_memset(void *src, unsigned char c, size_t len)$/;"	f
+ft_printf	libft/src/ft_printf/ft_printf.c	/^int		ft_printf(const char *format, ...)$/;"	f
+ft_putc	libft/src/ft_putchar.c	/^static void	ft_putc(int c, int fd)$/;"	f	file:
+ft_putchar	libft/src/ft_putchar.c	/^void		ft_putchar(int c)$/;"	f
+ft_putchar_fd	libft/src/ft_putchar.c	/^void		ft_putchar_fd(int c, int fd)$/;"	f
+ft_putendl	libft/src/ft_putendl.c	/^void	ft_putendl(char const *s)$/;"	f
+ft_putendl_fd	libft/src/ft_putendl.c	/^void	ft_putendl_fd(char const *s, int fd)$/;"	f
+ft_putnbr	libft/src/ft_putnbr.c	/^void	ft_putnbr(long long nbr)$/;"	f
+ft_putnbr_base	libft/src/ft_putnbr.c	/^void	ft_putnbr_base(long long nbr, int base)$/;"	f
+ft_putnbr_base_fd	libft/src/ft_putnbr.c	/^void	ft_putnbr_base_fd(long long nbr, int base, int fd)$/;"	f
+ft_putnbr_fd	libft/src/ft_putnbr.c	/^void	ft_putnbr_fd(long long nbr, int fd)$/;"	f
+ft_putnstr_fd	libft/src/ft_putstr.c	/^void	ft_putnstr_fd(char const *s, int fd, size_t l)$/;"	f
+ft_putstr	libft/src/ft_putstr.c	/^void	ft_putstr(char const *s)$/;"	f
+ft_putstr_fd	libft/src/ft_putstr.c	/^void	ft_putstr_fd(char const *s, int fd)$/;"	f
+ft_strcat	libft/src/ft_strcat.c	/^char	*ft_strcat(char *s1, const char *s2)$/;"	f
+ft_strchr	libft/src/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
+ft_strclr	libft/src/ft_strclr.c	/^void	ft_strclr(char *s)$/;"	f
+ft_strcmp	libft/src/ft_strcmp.c	/^int		ft_strcmp(const char *p1, const char *p2)$/;"	f
+ft_strcpy	libft/src/ft_strcpy.c	/^char	*ft_strcpy(char *d, const char *s)$/;"	f
+ft_strdel	libft/src/ft_strdel.c	/^void	ft_strdel(char **as)$/;"	f
+ft_strdup	libft/src/ft_strdup.c	/^char	*ft_strdup(const char *s)$/;"	f
+ft_strequ	libft/src/ft_strequ.c	/^int		ft_strequ(char const *s1, char const *s2)$/;"	f
+ft_striter	libft/src/ft_striter.c	/^void	ft_striter(char *s, void (*f)(char *))$/;"	f
+ft_striteri	libft/src/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char *))$/;"	f
+ft_strjoin	libft/src/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strlcat	libft/src/ft_strlcat.c	/^size_t			ft_strlcat(char *dst, const char *src, size_t len)$/;"	f
+ft_strlen	libft/src/ft_strlen.c	/^size_t	ft_strlen(const char *s)$/;"	f
+ft_strmap	libft/src/ft_strmap.c	/^char	*ft_strmap(char const *s, char (*f)(char))$/;"	f
+ft_strmapi	libft/src/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strncat	libft/src/ft_strncat.c	/^char		*ft_strncat(char *s1, const char *s2, size_t n)$/;"	f
+ft_strncmp	libft/src/ft_strncmp.c	/^int		ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
+ft_strncpy	libft/src/ft_strncpy.c	/^char	*ft_strncpy(char *d, const char *s, size_t n)$/;"	f
+ft_strnequ	libft/src/ft_strnequ.c	/^int		ft_strnequ(char const *s1, char const *s2, size_t n)$/;"	f
+ft_strnew	libft/src/ft_strnew.c	/^char	*ft_strnew(size_t size)$/;"	f
+ft_strnlen	libft/src/ft_strlen.c	/^size_t	ft_strnlen(const char *s, size_t n)$/;"	f
+ft_strnstr	libft/src/ft_strnstr.c	/^char	*ft_strnstr(const char *big, const char *little, size_t len)$/;"	f
+ft_strrchr	libft/src/ft_strrchr.c	/^char	*ft_strrchr(const char *s, int c)$/;"	f
+ft_strsplit	libft/src/ft_strsplit.c	/^char			**ft_strsplit(char const *s, char c)$/;"	f
+ft_strstr	libft/src/ft_strstr.c	/^char	*ft_strstr(const char *big, const char *little)$/;"	f
+ft_strsub	libft/src/ft_strsub.c	/^char	*ft_strsub(char const *s, unsigned int start, size_t len)$/;"	f
+ft_strtrim	libft/src/ft_strtrim.c	/^char		*ft_strtrim(const char *s)$/;"	f
+ft_tolower	libft/src/ft_to.c	/^int		ft_tolower(int c)$/;"	f
+ft_toupper	libft/src/ft_to.c	/^int		ft_toupper(int c)$/;"	f
+ft_vfprintf	libft/src/ft_printf/ft_vfprintf.c	/^int			ft_vfprintf(int f, const char *fmt, va_list ap)$/;"	f
+ft_wcrtomb	libft/src/ft_wctomb.c	/^size_t			ft_wcrtomb(char *s, wchar_t wc, mbstate_t *st)$/;"	f
+ft_wctomb	libft/src/ft_wctomb.c	/^int				ft_wctomb(char *str, wchar_t wc)$/;"	f
+ft_wlen	libft/src/ft_strsplit.c	/^static int		ft_wlen(const char *s, char c)$/;"	f	file:
+g_b64encodingtable	src/b64_encode.c	/^static char g_b64encodingtable[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',$/;"	v	file:
+g_mdtable	src/m_dtable.c	/^static const t_dtable g_mdtable[] = {$/;"	v	file:
+g_modtable	src/b64_encode.c	/^static int g_modtable[] = {0, 2, 1};$/;"	v	file:
+g_states	libft/src/ft_printf/state_machine.c	/^static const unsigned char g_states[]['z' - 'A' + 1] = {$/;"	v	file:
+get_current	libft/src/get_next_line.c	/^static t_list	*get_current(int fd, t_list *list)$/;"	f	file:
+get_line	libft/src/get_next_line.c	/^static int		get_line(char **line, t_list *current, char *tmp)$/;"	f	file:
+get_next_line	libft/src/get_next_line.c	/^int				get_next_line(int fd, char **line)$/;"	f
+get_python_inc	.ycm_extra_conf.py	/^from distutils.sysconfig import get_python_inc$/;"	i
+get_python_inc	libft/.ycm_extra_conf.py	/^from distutils.sysconfig import get_python_inc$/;"	i
+getint	libft/src/ft_printf/util.c	/^int		getint(char **s)$/;"	f
+handle_lit	libft/src/ft_printf/core.c	/^int		handle_lit(t_print *var)$/;"	f
+i	libft/includes/ft_printf.h	/^	size_t		i;$/;"	m	struct:s_print
+i	libft/includes/ft_printf.h	/^	uintmax_t	i;$/;"	m	union:u_arg
+l	libft/includes/ft_printf.h	/^	int			l;$/;"	m	struct:s_print
+m_invalidarg	src/m_error.c	/^void	m_invalidarg(char *arg)$/;"	f
+m_strategy	src/m_dtable.c	/^int	m_strategy(char **cmd)$/;"	f
+m_usage	src/m_error.c	/^void	m_usage()$/;"	f
+main	src/main.c	/^int main(int argc, char **argv)$/;"	f
+mb	libft/includes/ft_printf.h	/^	char		mb[4];$/;"	m	struct:s_print
+modflags	libft/src/ft_printf/parse.c	/^void	modflags(t_print *var)$/;"	f
+name	includes/ft_ssl.h	/^	const char	*name;$/;"	m	struct:s_dtable
+next	libft/includes/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
+os	.ycm_extra_conf.py	/^import os$/;"	i
+os	libft/.ycm_extra_conf.py	/^import os$/;"	i
+p	libft/includes/ft_printf.h	/^	int			p;$/;"	m	struct:s_print
+p	libft/includes/ft_printf.h	/^	void		*p;$/;"	m	union:u_arg
+padp	libft/src/ft_printf/util.c	/^void	padp(t_print *var, char c, int l, int fl)$/;"	f
+padw	libft/src/ft_printf/util.c	/^void	padw(t_print *var, char c, int l, int fl)$/;"	f
+pl	libft/includes/ft_printf.h	/^	int			pl;$/;"	m	struct:s_print
+platform	.ycm_extra_conf.py	/^import platform$/;"	i
+platform	libft/.ycm_extra_conf.py	/^import platform$/;"	i
+pop_arg	libft/src/ft_printf/state_machine.c	/^static void pop_arg(t_print *var, va_list *ap)$/;"	f	file:
+pop_arg2	libft/src/ft_printf/state_machine.c	/^static void pop_arg2(t_print *var, va_list *ap)$/;"	f	file:
+pop_list	libft/src/ft_getline.c	/^static t_list	*pop_list(int fd, t_list **list)$/;"	f	file:
+precision	libft/src/ft_printf/parse.c	/^int		precision(t_print *var, va_list *ap)$/;"	f
+prefix	libft/includes/ft_printf.h	/^	const char	*prefix;$/;"	m	struct:s_print
+print	libft/src/ft_printf/ft_vfprintf.c	/^static int	print(t_print *var)$/;"	f	file:
+printf_core	libft/src/ft_printf/ft_vfprintf.c	/^static int	printf_core(int f, t_print var, va_list *ap)$/;"	f	file:
+ps	libft/includes/ft_printf.h	/^	unsigned	ps;$/;"	m	struct:s_print
+pswitch	libft/src/ft_printf/ft_vfprintf.c	/^static t_dtable pswitch[] = {$/;"	v	file:
+s	libft/includes/ft_printf.h	/^	char		*s;$/;"	m	struct:s_print
+s_dtable	includes/ft_ssl.h	/^typedef	struct	s_dtable$/;"	s
+s_dtable	libft/includes/ft_printf.h	/^typedef struct	s_dtable$/;"	s
+s_list	libft/includes/libft.h	/^typedef struct	s_list$/;"	s
+s_print	libft/includes/ft_printf.h	/^typedef	struct	s_print$/;"	s
+setup	libft/src/ft_printf/ft_vfprintf.c	/^static void setup(t_print *var)$/;"	f	file:
+st	libft/includes/ft_printf.h	/^	unsigned	st;$/;"	m	struct:s_print
+state_machine	libft/src/ft_printf/state_machine.c	/^int		state_machine(t_print *var, va_list *ap)$/;"	f
+store	libft/src/ft_getline.c	/^static void		store(t_list *current, char *buf)$/;"	f	file:
+store	libft/src/get_next_line.c	/^static void		store(t_list *current, char *buf)$/;"	f	file:
+t	libft/includes/ft_printf.h	/^	int			t;$/;"	m	struct:s_print
+t_arg	libft/includes/ft_printf.h	/^}				t_arg;$/;"	t	typeref:union:u_arg
+t_dtable	includes/ft_ssl.h	/^}				t_dtable;$/;"	t	typeref:struct:s_dtable
+t_dtable	libft/includes/ft_printf.h	/^}				t_dtable;$/;"	t	typeref:struct:s_dtable
+t_list	libft/includes/libft.h	/^}				t_list;$/;"	t	typeref:struct:s_list
+t_print	libft/includes/ft_printf.h	/^}				t_print;$/;"	t	typeref:struct:s_print
+three_byte	libft/src/ft_wctomb.c	/^static size_t	three_byte(char *s, wchar_t wc)$/;"	f	file:
+two_byte	libft/src/ft_wctomb.c	/^static size_t	two_byte(char *s, wchar_t wc)$/;"	f	file:
+u_arg	libft/includes/ft_printf.h	/^typedef	union	u_arg$/;"	u
+var_init	libft/src/ft_printf/ft_vfprintf.c	/^static void	var_init(t_print *var, const char *fmt)$/;"	f	file:
+w	libft/includes/ft_printf.h	/^	int			w;$/;"	m	struct:s_print
+wc	libft/includes/ft_printf.h	/^	wchar_t		wc[2];$/;"	m	struct:s_print
+width	libft/src/ft_printf/parse.c	/^int		width(t_print *var, va_list *ap)$/;"	f
+ws	libft/includes/ft_printf.h	/^	wchar_t		*ws;$/;"	m	struct:s_print
+xp	libft/includes/ft_printf.h	/^	int			xp;$/;"	m	struct:s_print
+ycm_core	.ycm_extra_conf.py	/^import ycm_core$/;"	i
+ycm_core	libft/.ycm_extra_conf.py	/^import ycm_core$/;"	i
+z	libft/includes/ft_printf.h	/^	char		*z;$/;"	m	struct:s_print

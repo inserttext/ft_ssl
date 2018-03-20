@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   m_utils.c                                          :+:      :+:    :+:   */
+/*   b64_error.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/04 01:25:30 by tingo             #+#    #+#             */
-/*   Updated: 2018/03/04 14:31:46 by tingo            ###   ########.fr       */
+/*   Created: 2018/03/14 01:12:17 by tingo             #+#    #+#             */
+/*   Updated: 2018/03/14 01:18:09 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_ssl.h"
+#include "../includes/base64.h"
 
-void	m_usage()
-{
-	ft_printf("usage: ft_ssl command [command opts] [command args]\n");
-}
-
-void	m_invalidarg(char *arg)
+void	b64_invalidin(char *file)
 {
 	ft_printf(
-			"ft_ssl: Error: '%s' is an invalid command.\n"
-			"\n"
-			"Standard Commands:\n"
-			"\n"
-			"Message Digest Commands:\n"
-			"\n"
-			"Cipher Commands:\n"
-			"base64\n", arg);
+			"base64: Cannot open input file %s, No such file or directory\n"
+			"base64: Use -help for summary.\n", file);
+	exit(0);
+}
+
+void	b64_invalidout(char *file)
+{
+	ft_printf(
+			"base64: Cannot open output file %s, No such file or directory\n"
+			"base64: Use -help for summary.\n", file);
+	exit(0);
 }
