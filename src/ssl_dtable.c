@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   m_error.c                                          :+:      :+:    :+:   */
+/*   ssl_dtable.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/14 01:11:10 by tingo             #+#    #+#             */
-/*   Updated: 2018/03/14 01:11:15 by tingo            ###   ########.fr       */
+/*   Created: 2018/03/04 02:37:06 by tingo             #+#    #+#             */
+/*   Updated: 2018/03/21 15:00:24 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ssl.h"
 
-void	m_usage()
-{
-	ft_printf("usage: ft_ssl command [command opts] [command args]\n");
-}
+static const t_dtable g_ssl_dtable[] = {
+	{"base64", &base64}
+};
 
-void	m_invalidarg(char *arg)
+int	ssl_strategy(char **cmd)
 {
-	ft_printf(
-			"ft_ssl: Error: '%s' is an invalid command.\n"
-			"\n"
-			"Standard Commands:\n"
-			"\n"
-			"Message Digest Commands:\n"
-			"\n"
-			"Cipher Commands:\n"
-			"base64\n", arg);
+	int i;
+
+	i = 0;
+	while (i < 1)
+	{
+		if (!(ft_strcmp(cmd[0], g_ssl_dtable[i].name)))
+			return (g_ssl_dtable[i].f(&cmd[1]));
+		i++;
+	}
+	return (-1);
 }

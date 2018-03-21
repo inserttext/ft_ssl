@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssl.h                                           :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/04 01:25:52 by tingo             #+#    #+#             */
-/*   Updated: 2018/03/21 14:56:43 by tingo            ###   ########.fr       */
+/*   Created: 2018/03/21 10:38:20 by tingo             #+#    #+#             */
+/*   Updated: 2018/03/21 15:02:03 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SSL_H
-# define FT_SSL_H
+#include "../includes/ft_ssl.h"
 
-# include "../libft/includes/libft.h"
-
-typedef	struct	s_dtable
+int	u_cleanopen(int fd, char *file, int oflag, mode_t cflag)
 {
-	const char	*name;
-	int			(*f)(char **arg);
-}				t_dtable;
-
-int				base64(char **args);
-
-int				m_strategy(char **cmd);
-void			m_usage();
-void			m_invalidarg(char *arg);
-
-int g_closeopen(int fd, char *file, int oflags, mode_t cflags);
-
-#endif
+	if (fd > 2)
+		close(fd);
+	return (open(file, oflag, cflag));
+}

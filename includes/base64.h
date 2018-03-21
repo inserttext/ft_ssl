@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 14:55:54 by tingo             #+#    #+#             */
-/*   Updated: 2018/03/14 01:18:29 by tingo            ###   ########.fr       */
+/*   Updated: 2018/03/20 16:24:36 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ char		*b64_encode(const unsigned char *data, size_t i_len, size_t* o_len);
 
 void		b64_invalidin(char *file);
 void		b64_invalidout(char *file);
+void		b64_invalidarg(char *arg);
 
 #endif
