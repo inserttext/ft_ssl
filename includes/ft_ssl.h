@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 01:25:52 by tingo             #+#    #+#             */
-/*   Updated: 2018/03/21 14:56:43 by tingo            ###   ########.fr       */
+/*   Updated: 2018/03/27 12:51:18 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,16 @@
 
 # include "../libft/includes/libft.h"
 
+int				base64(char **args);
+
 typedef	struct	s_dtable
 {
 	const char	*name;
 	int			(*f)(char **arg);
 }				t_dtable;
 
-int				base64(char **args);
-
-int				m_strategy(char **cmd);
-void			m_usage();
-void			m_invalidarg(char *arg);
-
-int g_closeopen(int fd, char *file, int oflags, mode_t cflags);
+int				ssl_strategy(char **cmd);
+void			ssl_usage();
+void			ssl_invalidarg(char *arg);
 
 #endif

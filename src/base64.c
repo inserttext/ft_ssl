@@ -6,29 +6,48 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 03:01:36 by tingo             #+#    #+#             */
-/*   Updated: 2018/03/16 15:12:55 by tingo            ###   ########.fr       */
+/*   Updated: 2018/03/27 16:58:51 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/base64.h"
 
-int	base64(char **args)
-{
-	int fd_in;
-	int fd_out;
-	size_t len;
-	char *out;
-	char *str = ft_strnew(0);
-	int flag;
+#define OFLAGS (O_CREAT | O_TRUNC | O_WRONLY)
+#define MFLAGS (S_IRUSR | S_IWUSR)
 
-	fd_in = STDIN_FILENO;
-	fd_out = STDOUT_FILENO;
-	(void)args;
-	flag = b64_parse_args(args, &fd_in, &fd_out);
-	len = b64_getline(fd_in, &str);
-	if (flag == 0)
-		if ((out = b64_encode((unsigned char *)str, len, &len)))
-			while (ft_fprintf(fd_out, "%.*s\n", BUFF_SIZE, out) == BUFF_SIZE + 1)
-				out += BUFF_SIZE;
-	return (0);
+static int	b64_open(char *file, int flags, mode_t mode)
+{
+	int fd;
+
+	if ((fd = open(file, flags, mode)) < 0)
+		mode == 0 ? b64_invalidin(file) : b64_invalidout(file);
+	return (fd);
+}
+
+static int	b64_parse_arg(char **arg)
+{
+	int ret;
+
+	ret = 0;
+	while (*arg && (*arg)[0] == '-')
+	{
+		if ((*arg)[1] == 'e' && (*arg)[0] == 0)
+			ret = 0;
+		else if ((*arg)[1] == 'd' && (*arg)[0] == 0)
+			ret = 1;
+		else if (!ft_strcmp(*arg, "-in"))
+			g_fdin = b64_open(*++arg, O_RDONLY, 0);
+		else if (!ft_strcmp(*arg, "-out"))
+			g_fdout = b64_open(*++arg, OFLAGS, MFLAGS);
+		else if (!ft_strcmp(*arg, "-bufsize"))
+			g_b64_bufsize = ft_atoi(*++arg);
+		else
+			b64_invalidarg(*arg);
+		arg++;
+	}
+	return (ret);
+}
+
+char		*base64(char **arg)
+{
 }

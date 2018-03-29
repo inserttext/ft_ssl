@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 14:55:54 by tingo             #+#    #+#             */
-/*   Updated: 2018/03/20 16:24:36 by tingo            ###   ########.fr       */
+/*   Updated: 2018/03/27 16:53:45 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 # define BASE64_H
 
 # include "../includes/ft_ssl.h"
+# include <sys/stat.h>
 
-#undef BUFF_SIZE
-#define BUFF_SIZE 76
+static size_t g_b64_bufsize = 76;
+static int g_fdin = STDIN_FILENO;
+static int g_fdout = STDOUT_FILENO;
 
-int			b64_parse_args(char **args, int *fd_in, int *fd_out);
+/* int			b64_parse_args(char **args, int *fd_in, int *fd_out); */
 size_t		b64_getline(int fd, char **store);
 char		*b64_encode(const unsigned char *data, size_t i_len, size_t* o_len);
 
