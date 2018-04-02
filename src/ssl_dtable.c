@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 02:37:06 by tingo             #+#    #+#             */
-/*   Updated: 2018/03/21 15:00:24 by tingo            ###   ########.fr       */
+/*   Updated: 2018/03/29 19:48:18 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static const t_dtable g_ssl_dtable[] = {
 	{"base64", &base64}
 };
 
-int	ssl_strategy(char **cmd)
+char	*ssl_strategy(char **cmd)
 {
 	int i;
 
@@ -27,5 +27,5 @@ int	ssl_strategy(char **cmd)
 			return (g_ssl_dtable[i].f(&cmd[1]));
 		i++;
 	}
-	return (-1);
+	return (0);
 }
