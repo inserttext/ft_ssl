@@ -6,37 +6,69 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 19:21:09 by tingo             #+#    #+#             */
-/*   Updated: 2018/03/31 17:13:45 by tingo            ###   ########.fr       */
+/*   Updated: 2018/04/10 13:53:37 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/base64.h"
 
+static char g_b64_decodetable[] = {
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 62,  0,  0,  0, 63,
+	52, 53, 54, 55, 56, 57, 58, 59, 60, 61,  0,  0,  0,  0,  0,  0,
+	 0,  0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14,
+	15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,  0,  0,  0,  0,  0,
+	 0, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
+	41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+};
 
-char *b64_decode(const unsigned char *data, size_t i_len)
+static char	*b64d_clean(char *data)
 {
-	uint32_t val;
-	char *str;
+	char *out;
+	char *tmp;
+	char *c;
 
+	out = ft_strnew(0);
+	while ((c = ft_strchr(data, '\n')))
+	{
+		*c = 0;
+		tmp = out;
+		out = ft_strjoin(out, data);
+		data = c + 1;
+		while (*data == '\n')
+			data++;
+		free(tmp);
+	}
+	return (out);
+}
+
+static void b64d_verify(unsigned char *data)
+{
+	while (*data)
+	{
+		if (!g_b64_decodetable[*data] && *data != 'A' && *data != '=')
+			exit(0);
+		if (*data == '=')
+			while (*++data)
+				if (*data != '=')
+					exit (0);
+		data++;
+	}
+}
+
+char		*b64_decode(char *data, size_t i_len)
+{
+	char *str = b64d_clean(data);
+	b64d_verify((unsigned char *)str);
 	(void)i_len;
-	str = ft_strnew(3);
-	val = 0;
-	ft_printf("%d\n", val);
-	val |= *data++;
-	val <<= 6U;
-	ft_printf("%d\n", val);
-	val |= *data++;
-	val <<= 6U;
-	ft_printf("%d\n", val);
-	val |= *data++;
-	val <<= 6U;
-	ft_printf("%d\n", val);
-	val |= *data++;
-	str[0] = val >> 16 & 0xffU;
-	ft_printf("%s\n", str);
-	str[1] = val >> 8 & 0xffU;
-	ft_printf("%s\n", str);
-	str[2] = val >> 0 & 0xffU;
-	ft_printf("%s\n", str);
-	return (str);
+	return (0);
 }

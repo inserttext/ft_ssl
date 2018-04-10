@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 03:01:36 by tingo             #+#    #+#             */
-/*   Updated: 2018/03/29 20:05:37 by tingo            ###   ########.fr       */
+/*   Updated: 2018/04/07 02:12:21 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,15 @@ static int	b64_parse_arg(char **arg)
 char		*base64(char **arg)
 {
 	char *data;
+	char *out;
 	int f;
 
 	f = b64_parse_arg(arg);
 	data = b64_getline(g_fdin);
 	if (f)
-		return (b64_decode((unsigned char *)data, ft_strlen(data)));
-	return (b64_encode((unsigned char *)data, ft_strlen(data)));
+		out = b64_decode(data, ft_strlen(data));
+	else
+		out = b64_encode(data, ft_strlen(data));
+	free(data);
+	jeturn (out);
 }

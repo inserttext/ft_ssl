@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 10:43:37 by tingo             #+#    #+#             */
-/*   Updated: 2018/03/29 19:53:00 by tingo            ###   ########.fr       */
+/*   Updated: 2018/04/10 13:54:01 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ static char g_b64encodingtable[] = {
 	'4', '5', '6', '7', '8', '9', '+', '/'
 };
 
-static unsigned g_b64_modtable[] = {0, 2, 1};
-
 static void	b64e_assign(char **buf, uint32_t val)
 {
 	*(*buf)++ = g_b64encodingtable[(val >> (3U * 6U)) & 0x3fU];
@@ -33,17 +31,24 @@ static void	b64e_assign(char **buf, uint32_t val)
 	*(*buf)++ = g_b64encodingtable[(val >> (0U * 6U)) & 0x3fU];
 }
 
-char	*b64_encode(const unsigned char *data, size_t i_len)
+static char *b64e_pad(char *out, size_t i_len)
+{
+	if (i_len % 3 == 2)
+		*(out + ft_strlen(out) - 1) = '=';
+	else if (i_len % 3 == 1)
+		*(uint16_t *)(out + ft_strlen(out) - 2) = *(uint16_t *)"==";
+	return(out);
+}
+
+char	*b64_encode(char *data, size_t i_len)
 {
 	char *out;
 	char *z;
 	uint32_t val;
-	size_t o_len;
 	size_t i;
 
 	i = 0;
-	o_len = ((i_len + 2) / 3) * 4;
-	out = ft_strnew(o_len);
+	out = ft_strnew(((i_len + 2) / 3) * 4);
 	z = out;
 	while (i < i_len)
 	{
@@ -53,11 +58,7 @@ char	*b64_encode(const unsigned char *data, size_t i_len)
 		val = (val << 8U) + (i < i_len ? data[i++] : 0);
 		b64e_assign(&z, val);
 	}
-	i = 0;
-	while (i < g_b64_modtable[i_len % 3])
-	{
-		out[o_len - 1 - i] = '=';
-		i++;
-	}
+	b64e_pad(out, i_len);
+	free(data);
 	return (out);
 }
