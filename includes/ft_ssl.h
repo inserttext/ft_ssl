@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 01:25:52 by tingo             #+#    #+#             */
-/*   Updated: 2018/03/29 19:54:03 by tingo            ###   ########.fr       */
+/*   Updated: 2018/04/11 22:57:00 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 # include "../libft/includes/libft.h"
 
-int g_fdin;
-int g_fdout;
+int				g_fdin;
+int				g_fdout;
+size_t			g_bufsize;
 
 char			*base64(char **arg);
 
@@ -29,5 +30,6 @@ typedef	struct	s_dtable
 char			*ssl_strategy(char **cmd);
 void			ssl_usage();
 void			ssl_invalidarg(char *arg);
+void			ssl_print(char *str);
 
 #endif

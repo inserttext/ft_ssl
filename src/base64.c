@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 03:01:36 by tingo             #+#    #+#             */
-/*   Updated: 2018/04/07 02:12:21 by tingo            ###   ########.fr       */
+/*   Updated: 2018/04/11 22:57:05 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 #define OFLAGS (O_CREAT | O_TRUNC | O_WRONLY)
 #define MFLAGS (S_IRUSR | S_IWUSR)
-
-size_t g_b64_bufsize = 8192;
 
 static int	b64_open(char *file, int flags, mode_t mode)
 {
@@ -65,5 +63,5 @@ char		*base64(char **arg)
 	else
 		out = b64_encode(data, ft_strlen(data));
 	free(data);
-	jeturn (out);
+	return (out);
 }

@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 14:55:54 by tingo             #+#    #+#             */
-/*   Updated: 2018/04/05 14:19:55 by tingo            ###   ########.fr       */
+/*   Updated: 2018/04/12 00:14:15 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include "../includes/ft_ssl.h"
 # include <sys/stat.h>
 
-size_t		g_b64_bufsize;
-/* int			b64_parse_args(char **args, int *fd_in, int *fd_out); */
 char		*b64_getline(int fd);
 char		*b64_decode(char *data, size_t i_len);
 char		*b64_encode(char *data, size_t i_len);
