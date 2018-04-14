@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 01:47:28 by tingo             #+#    #+#             */
-/*   Updated: 2018/04/11 22:58:00 by tingo            ###   ########.fr       */
+/*   Updated: 2018/04/13 22:21:30 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 	if (argc > 1)
 	{
 		out = ssl_strategy(argv + 1);
-		ssl_print(out);
+		ft_printf("%s", out);
 		free(out);
 	}
 	else

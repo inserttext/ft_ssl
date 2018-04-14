@@ -6,13 +6,13 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 19:21:09 by tingo             #+#    #+#             */
-/*   Updated: 2018/04/12 03:22:46 by tingo            ###   ########.fr       */
+/*   Updated: 2018/04/13 22:45:31 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/base64.h"
 
-static const unsigned char	g_b64d_table[] = {
+static const unsigned char	g_b64d_tbl[] = {
     64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64,
     64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64,
     64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 62, 64, 64, 64, 63,
@@ -31,7 +31,7 @@ static const unsigned char	g_b64d_table[] = {
     64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64
 };
 
-static char					*b64d_clean(char *data)
+static char		*b64d_clean(char *data)
 {
 	char *out;
 	char *tmp;
@@ -46,7 +46,6 @@ static char					*b64d_clean(char *data)
 		data = c + 1;
 		while (*data == '\n')
 			data++;
-		out = ft_strjoin(out, data);
 		free(tmp);
 	}
 	return (out);
@@ -56,27 +55,55 @@ static int					b64d_invalid(char *data, size_t len)
 {
 	if (ft_strchr(data, '\n') && len)
 	{
-		while (g_b64d_table[(unsigned char)*data] < 64 || *data == '\n')
+		while (g_b64d_tbl[(unsigned char)*data] < 64 || *data == '\n')
 			data++;
 		if (*data == '=')
-		{
-			data += data[1] == '=' ? 2 : 1;
-			while (*data == '\n')
-				data++;
-		}
+			*data++ = 'A';
+		if (*data == '=')
+			*data++ = 'A';
+		while (*data == '\n')
+			data++;
 		if (!*data)
 			return (0);
 	}
 	return (1);
 }
 
-char						*b64_decode(char *data, size_t len)
+static size_t	b64d_convert(char **out, unsigned char **d, size_t *len)
+{
+	unsigned char	buf[49];
+	char			*tmp;
+	size_t			i;
+
+	i = 0;
+	ft_bzero(buf, 49);
+	if (*len >= 64 || (*len < 64 && !(*len % 4)))
+		while (i < 48 && *len)
+		{
+			buf[i++] = (g_b64d_tbl[(*d)[0]] << 2) | (g_b64d_tbl[(*d)[1]] >> 4);
+			buf[i++] = (g_b64d_tbl[(*d)[1]] << 4) | (g_b64d_tbl[(*d)[2]] >> 2);
+			buf[i++] = (g_b64d_tbl[(*d)[2]] << 6) | (g_b64d_tbl[(*d)[3]] >> 0);
+			*d += 4;
+			*len -= 4;
+		}
+	else
+		return (0);
+	tmp = *out;
+	*out = ft_strjoin(*out, (char *)buf);
+	free(tmp);
+	return (*len);
+}
+
+char			*b64_decode(char *data, size_t len)
 {
 	char *out;
 
 	if (b64d_invalid(data, len))
 		exit(0);
-	out = b64d_clean(data);
+	out = malloc(1);
+	data = b64d_clean(data);
 	len = ft_strlen(data);
-	return (out);
+	while (b64d_convert(&out, (unsigned char **)&data, &len))
+		;
+	return (0);
 }

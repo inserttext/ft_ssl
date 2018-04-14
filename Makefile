@@ -6,12 +6,12 @@
 #    By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 23:52:47 by tingo             #+#    #+#              #
-#    Updated: 2018/04/12 00:54:01 by tingo            ###   ########.fr        #
+#    Updated: 2018/04/13 21:30:38 by tingo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC     = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 NAME   = ft_ssl
 
 ODIR   = obj
