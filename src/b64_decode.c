@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 19:21:09 by tingo             #+#    #+#             */
-/*   Updated: 2018/04/13 22:45:31 by tingo            ###   ########.fr       */
+/*   Updated: 2018/04/13 22:58:52 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,5 @@ char			*b64_decode(char *data, size_t len)
 	len = ft_strlen(data);
 	while (b64d_convert(&out, (unsigned char **)&data, &len))
 		;
-	return (0);
+	return (out);
 }
