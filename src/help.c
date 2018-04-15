@@ -1,13 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   b64_error.c                                        :+:      :+:    :+:   */
+/*   help.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/14 01:12:17 by tingo             #+#    #+#             */
-/*   Updated: 2018/04/14 19:03:04 by tingo            ###   ########.fr       */
+/*   Created: 2018/04/13 23:46:10 by tingo             #+#    #+#             */
+/*   Updated: 2018/04/13 23:56:11 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/base64.h"
+# include "../libft/includes/libft.h"
+
+char	*help(char **arg)
+{
+	(void)arg;
+	ft_printf("\n"
+			"Standard Commands:\n"
+			"\n"
+			"Message Digest Commands:\n"
+			"\n"
+			"Cipher Commands:\n"
+			"base64\n");
+	return (0);
+}

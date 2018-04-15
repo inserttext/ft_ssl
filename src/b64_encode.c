@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 10:43:37 by tingo             #+#    #+#             */
-/*   Updated: 2018/04/13 22:39:35 by tingo            ###   ########.fr       */
+/*   Updated: 2018/04/14 10:26:49 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char				*b64_encode(char *data, size_t len)
 	p = out;
 	while (len >= 3)
 	{
-		*p++ = g_b64e_tbl[data[0] >> 2];
+		*p++ = g_b64e_tbl[(data[0] >> 2) & 0x3F];
 		*p++ = g_b64e_tbl[((data[0] << 4) | (data[1] >> 4)) & 0x3F];
 		*p++ = g_b64e_tbl[((data[1] << 2) | (data[2] >> 6)) & 0x3F];
 		*p++ = g_b64e_tbl[data[2] & 0x3F];

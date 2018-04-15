@@ -6,27 +6,13 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 03:01:36 by tingo             #+#    #+#             */
-/*   Updated: 2018/04/11 22:57:05 by tingo            ###   ########.fr       */
+/*   Updated: 2018/04/14 19:32:27 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/base64.h"
 
-#define OFLAGS (O_CREAT | O_TRUNC | O_WRONLY)
-#define MFLAGS (S_IRUSR | S_IWUSR)
 
-static int	b64_open(char *file, int flags, mode_t mode)
-{
-	int fd;
-
-	if (mode == 0 && g_fdin > 2)
-		close(g_fdin);
-	else if (g_fdout > 2)
-		close(g_fdout);
-	if ((fd = open(file, flags, mode)) < 0)
-		mode == 0 ? b64_invalidin(file) : b64_invalidout(file);
-	return (fd);
-}
 
 static int	b64_parse_arg(char **arg)
 {
@@ -35,16 +21,16 @@ static int	b64_parse_arg(char **arg)
 	ret = 0;
 	while (*arg && (*arg)[0] == '-')
 	{
-		if ((*arg)[1] == 'e' && (*arg)[2] == 0)
+		if ((*arg)[1] == 'e' && !(*arg)[2])
 			ret = 0;
-		else if ((*arg)[1] == 'd' && (*arg)[2] == 0)
+		else if ((*arg)[1] == 'd' && !(*arg)[2])
 			ret = 1;
-		else if (!ft_strcmp(*arg, "-in"))
-			g_fdin = b64_open(*++arg, O_RDONLY, 0);
-		else if (!ft_strcmp(*arg, "-out"))
-			g_fdout = b64_open(*++arg, OFLAGS, MFLAGS);
+		else if (!ft_strcmp(*arg, "-in") || ((*arg)[1] == 'i' && !(*arg)[2]))
+			g_fdin = ssl_open(*++arg, O_RDONLY, 0, "base64");
+		else if (!ft_strcmp(*arg, "-out") || ((*arg)[1] == 'o' && !(*arg)[2]))
+			g_fdout = ssl_open(*++arg, OFLAGS, MFLAGS, "base64");
 		else
-			b64_invalidarg(*arg);
+			ssl_invalidcmd(*arg);
 		arg++;
 	}
 	return (ret);
