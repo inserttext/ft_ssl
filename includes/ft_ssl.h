@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 01:25:52 by tingo             #+#    #+#             */
-/*   Updated: 2018/04/14 19:31:48 by tingo            ###   ########.fr       */
+/*   Updated: 2018/04/14 19:50:26 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,17 @@ typedef	struct	s_dtable
 	char		*(*f)(char **arg);
 }				t_dtable;
 
-int				ssl_open(char *file, int flags, mode_t mode, char *f);
 char			*ssl_strategy(char **cmd);
-void			ssl_print(char *str);
 
 /*
- * Errors
+** General Utilities
+*/
+
+int				ssl_open(char *file, int flags, mode_t mode, char *f);
+char			*ssl_getline(int fd);
+
+/*
+** General Errors
 */
 
 void			ssl_usage();

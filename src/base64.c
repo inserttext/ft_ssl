@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 03:01:36 by tingo             #+#    #+#             */
-/*   Updated: 2018/04/14 19:32:27 by tingo            ###   ########.fr       */
+/*   Updated: 2018/04/14 19:46:07 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char		*base64(char **arg)
 	int f;
 
 	f = b64_parse_arg(arg);
-	data = b64_getline(g_fdin);
+	data = ssl_getline(g_fdin);
 	if (f)
 		out = b64_decode(data, ft_strlen(data));
 	else
