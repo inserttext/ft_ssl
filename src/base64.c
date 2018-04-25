@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 03:01:36 by tingo             #+#    #+#             */
-/*   Updated: 2018/04/14 19:46:07 by tingo            ###   ########.fr       */
+/*   Updated: 2018/04/16 15:03:09 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static int	b64_parse_arg(char **arg)
 
 char		*base64(char **arg)
 {
-	char *data;
-	char *out;
-	int f;
+	char	*data;
+	char	*out;
+	int		f;
 
 	f = b64_parse_arg(arg);
 	data = ssl_getline(g_fdin);
