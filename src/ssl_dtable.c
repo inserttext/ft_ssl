@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 02:37:06 by tingo             #+#    #+#             */
-/*   Updated: 2018/04/14 19:31:26 by tingo            ###   ########.fr       */
+/*   Updated: 2018/04/25 17:27:44 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ssl_strategy(char **cmd)
 	i = 0;
 	while (i < 2)
 	{
-		if (!(ft_strcmp(*cmd, g_ssl_dtable[i].name)))
+		if (!(ft_strcmp(cmd[0], g_ssl_dtable[i].name)))
 			return (g_ssl_dtable[i].f(cmd + 1));
 		i++;
 	}
