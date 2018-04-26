@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 03:01:36 by tingo             #+#    #+#             */
-/*   Updated: 2018/04/16 15:03:09 by tingo            ###   ########.fr       */
+/*   Updated: 2018/04/26 00:21:07 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	b64_parse_arg(char **arg)
 		else if (!ft_strcmp(*arg, "-out") || ((*arg)[1] == 'o' && !(*arg)[2]))
 			g_fdout = ssl_open(*++arg, OFLAGS, MFLAGS, "base64");
 		else
-			ssl_invalidcmd(*arg);
+			ssl_invalidcipher(*arg, "base64");
 		arg++;
 	}
 	return (ret);
