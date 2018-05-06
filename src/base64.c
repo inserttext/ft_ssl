@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 03:01:36 by tingo             #+#    #+#             */
-/*   Updated: 2018/04/26 00:21:07 by tingo            ###   ########.fr       */
+/*   Updated: 2018/05/05 15:54:06 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static int	b64_parse_arg(char **arg)
 			ssl_invalidcipher(*arg, "base64");
 		arg++;
 	}
+	if (*arg)
+		ssl_extraarg("base64");
 	return (ret);
 }
 

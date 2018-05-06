@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 10:38:20 by tingo             #+#    #+#             */
-/*   Updated: 2018/04/14 19:43:48 by tingo            ###   ########.fr       */
+/*   Updated: 2018/05/05 12:23:33 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ int	ssl_open(char *file, int flags, mode_t mode, char *cmd)
 	else if (g_fdout > 2)
 		close(g_fdout);
 	if ((fd = open(file, flags, mode)) < 0)
-		mode == 0 ? ssl_invalidin(file, cmd) : ssl_invalidout(file, cmd);
+	{
+		if (mode)
+			ssl_invalidout(file, cmd);
+		else
+			ssl_invalidin(file, cmd);
+	}
 	return (fd);
 }
