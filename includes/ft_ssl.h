@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 01:25:52 by tingo             #+#    #+#             */
-/*   Updated: 2018/05/05 15:58:44 by tingo            ###   ########.fr       */
+/*   Updated: 2018/05/09 19:21:42 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ int				g_fdin;
 int				g_fdout;
 size_t			g_bufsize;
 
-char			*help(char **arg);
 char			*base64(char **arg);
 char			*des_ecb(char **arg);
+char			*help(char **arg);
+char			*md5(char **arg);
 
 char			*ssl_strategy(char **cmd);
 

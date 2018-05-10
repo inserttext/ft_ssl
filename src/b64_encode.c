@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 10:43:37 by tingo             #+#    #+#             */
-/*   Updated: 2018/04/14 20:54:29 by tingo            ###   ########.fr       */
+/*   Updated: 2018/05/08 13:19:12 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,4 @@ char				*b64_encode(char *data, size_t len)
 		b64e_pad(&p, data, len);
 	*p = '\n';
 	return (out);
-	}
-
+}

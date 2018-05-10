@@ -6,13 +6,11 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 03:01:36 by tingo             #+#    #+#             */
-/*   Updated: 2018/05/05 15:54:06 by tingo            ###   ########.fr       */
+/*   Updated: 2018/05/08 13:18:49 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/base64.h"
-
-
 
 static int	b64_parse_arg(char **arg)
 {
