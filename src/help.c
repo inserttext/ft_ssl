@@ -6,13 +6,13 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 23:46:10 by tingo             #+#    #+#             */
-/*   Updated: 2018/05/05 21:10:15 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/18 19:06:19 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../libft/includes/libft.h"
+#include "../libft/includes/libft.h"
 
-char	*help(char **arg)
+int	help(char **arg)
 {
 	(void)arg;
 	ft_fprintf(STDERR_FILENO,

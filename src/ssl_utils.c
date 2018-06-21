@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 10:38:20 by tingo             #+#    #+#             */
-/*   Updated: 2018/05/05 12:23:33 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/19 15:01:39 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ssl_getline(int fd)
 	char *buf;
 	char *tmp;
 
-	dst = malloc(1);
+	dst = (char *)ft_calloc(sizeof(char));
 	buf = ft_strnew(g_bufsize);
 	while (read(fd, buf, g_bufsize) > 0)
 	{
@@ -31,7 +31,7 @@ char	*ssl_getline(int fd)
 	return (dst);
 }
 
-int	ssl_open(char *file, int flags, mode_t mode, char *cmd)
+int		ssl_open(char *file, int flags, mode_t mode, char *cmd)
 {
 	int fd;
 

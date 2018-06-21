@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 03:01:36 by tingo             #+#    #+#             */
-/*   Updated: 2018/05/08 13:18:49 by tingo            ###   ########.fr       */
+/*   Updated: 2018/05/10 15:55:41 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	b64_parse_arg(char **arg)
 	return (ret);
 }
 
-char		*base64(char **arg)
+int			base64(char **arg)
 {
 	char	*data;
 	char	*out;
@@ -49,5 +49,7 @@ char		*base64(char **arg)
 	else
 		out = b64_encode(data, ft_strlen(data));
 	free(data);
-	return (out);
+	ft_fprintf(g_fdout, "%s", out);
+	free(out);
+	return (0);
 }

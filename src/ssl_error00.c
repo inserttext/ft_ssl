@@ -6,13 +6,13 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 01:11:10 by tingo             #+#    #+#             */
-/*   Updated: 2018/05/05 21:09:30 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/18 19:06:54 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ssl.h"
 
-void	ssl_usage()
+void	ssl_usage(void)
 {
 	ft_fprintf(STDERR_FILENO,
 			"usage: ft_ssl command [command opts] [command args]\n");
@@ -48,4 +48,3 @@ void	ssl_invalidout(char *file, char *cmd)
 			"%s: Use -help for summary.\n", cmd, file, cmd);
 	exit(0);
 }
-

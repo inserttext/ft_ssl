@@ -6,7 +6,7 @@
 #    By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/03 23:52:47 by tingo             #+#    #+#              #
-#    Updated: 2018/04/16 15:44:55 by tingo            ###   ########.fr        #
+#    Updated: 2018/06/16 14:23:24 by tingo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ OBJ    = $(patsubst %,$(ODIR)/%,$(_OBJ))
 all: $(NAME)
 
 $(NAME):
-	@make -C libft
+	@make re -C libft
 	@$(CC) $(CFLAGS) -o $(NAME) src/* -I $(IDIR) -L $(LDIR) -lft
 
 clean:

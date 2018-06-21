@@ -6,147 +6,16 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 02:37:06 by tingo             #+#    #+#             */
-/*   Updated: 2018/05/09 19:20:47 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/18 19:07:27 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ssl.h"
 
-typedef	struct	s_fnx
-{
-	const char		*name;
-	char			*(*f)(char **arg);
-}				t_fnx;
-
 static t_fnx			g_ssl_hmap[128] = {
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{"help", &help},
-	{0},
-	{0},
-	{0},
-	{0},
-	{"md5", &md5},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{"base64", &base64},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
+	[20] = {"help", &help},
+	[25] = {"md5", &md5},
+	[50] = {"base64", &base64},
 };
 
 static unsigned long	hash(unsigned char *str)
@@ -162,13 +31,13 @@ static unsigned long	hash(unsigned char *str)
 	return (hash);
 }
 
-char					*ssl_strategy(char **cmd)
+int						ssl_strategy(char **cmd)
 {
-	t_fnx	*blk;
+	t_fnx	blk;
 
-	if ((blk = &g_ssl_hmap[hash((unsigned char *)*cmd) % 128])->name)
-		if (!ft_strcmp(blk->name, *cmd))
-			return (blk->f(cmd + 1));
+	if ((blk = g_ssl_hmap[hash((unsigned char *)*cmd) % 128]).name)
+		if (!ft_strcmp(blk.name, *cmd))
+			return (blk.f(cmd + 1));
 	ssl_invalidcmd(*cmd);
-	return (0);
+	return (1);
 }

@@ -6,40 +6,53 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/08 13:15:03 by tingo             #+#    #+#             */
-/*   Updated: 2018/05/09 19:55:51 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/19 21:02:30 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/md5.h"
 
-static uint32_t	md5_parse_arg(unsigned char **arg)
+static int	md5_parse_arg(char ***arg, char **data, uint32_t *flag)
 {
-	uint32_t ret;
-
-	ret = 0;
-	while (*arg && (*arg)[0] == '-')
+	while (**arg && (**arg)[0] == '-')
 	{
-		*arg += 1;
-		while (**arg - 'a' < 32 && (FLAG_MASK & (1U << (**arg - 'a'))))
+		**arg += 1;
+		while (***arg - 'a' < 32 && (FLAG_MASK & (1U << (***arg - 'a'))))
 		{
-			ret |= 1U << (**arg - 'a');
-			*arg += 1;
+			*flag |= 1U << (***arg - 'a');
+			**arg += 1;
+			if (*flag & STR)
+			{
+				if (***arg)
+					*data = **arg++;
+				else if (*(++*arg))
+					*data = **arg;
+				else
+					exit(0); /* TODO: make a function for this case */
+				return (1);
+			}
 		}
-		arg++;
+		*arg += 1;
 	}
-	if (*arg)
-		ssl_extraarg("md5");
-	return (ret);
+	return (0);
 }
 
-char			*md5(char **arg)
+int			md5(char **arg)
 {
-	uint32_t	flags;
-	char 		*data;
+	uint32_t		flag;
+	struct s_queue	*pending;
+	char			*data;
 
-	flags = md5_parse_arg((unsigned char **)arg);
-	ft_itoa(flags);
-	data = ssl_getline(g_fdin);
-	ft_printf("%s", data);
-	return(0);
+	flag = 0;
+	if (!(pending = (t_queue *)ft_calloc(sizeof(t_queue))))
+		return (2);
+	while (md5_parse_arg(&arg, &data, &flag))
+		if (flag & STR)
+		{
+			enqueue(pending, ft_strdup(data));
+			flag ^= STR;
+		}
+	while (pending->head)
+	free(pending);
+	return (0);
 }
