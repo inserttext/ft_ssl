@@ -6,17 +6,21 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 15:32:32 by tingo             #+#    #+#             */
-/*   Updated: 2018/06/19 21:02:29 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/22 02:43:28 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/md5.h"
 
 static const uint32_t r[] = {
-	7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22,
-	5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20,
-	4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23,
-	6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21
+	7, 12, 17, 22, 7, 12, 17, 22,
+	7, 12, 17, 22, 7, 12, 17, 22,
+	5, 9, 14, 20, 5, 9, 14, 20,
+	5, 9, 14, 20, 5, 9, 14, 20,
+	4, 11, 16, 23, 4, 11, 16, 23,
+	4, 11, 16, 23, 4, 11, 16, 23,
+	6, 10, 15, 21, 6, 10, 15, 21,
+	6, 10, 15, 21, 6, 10, 15, 21
 };
 
 static const uint32_t k[] = {
@@ -42,64 +46,93 @@ struct s_uint128 h = {
 	0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476
 };
 
-t_uint128 md5_hash(uint8_t *initial_msg, size_t initial_len) {
+static uint8_t		*setup(
+		uint8_t *initial_msg, size_t initial_len, size_t *new_len)
+{
+	uint8_t		*msg;
+	uint32_t	bits_len;
 
-	uint8_t *msg;
-	size_t new_len;
-	uint32_t bits_len;
-
-	new_len = initial_len*8 + 1;
-	while (new_len % 512 !=448)
-		new_len++;
-	new_len /= 8;
-	msg = (uint8_t *)ft_calloc(sizeof(uint8_t) * (new_len + 64));
+	*new_len = initial_len * 8 + 1;
+	*new_len += *new_len % 512 < 448 ? 448 - *new_len % 512 :
+									(512 - (*new_len % 512)) + 448;
+	*new_len /= 8;
+	msg = (uint8_t *)ft_calloc(sizeof(uint8_t) * (*new_len + 64));
 	ft_memcpy(msg, initial_msg, initial_len);
-	msg[initial_len] = 128;
+	msg[initial_len] = 0x80;
 	bits_len = 8 * initial_len;
-	ft_memcpy(msg + new_len, &bits_len, 4);
-	size_t offset;
-	for(offset=0; offset<new_len; offset += (512/8)) {
+	ft_memcpy(msg + *new_len, &bits_len, 4);
+	return (msg);
+}
 
-		// break chunk into sixteen 32-bit words w[j], 0 ≤ j ≤ 15
-		uint32_t *w = (uint32_t *) (msg + offset);
+static inline void	assign(
+		struct s_uint128 *t, uint32_t i, uint32_t *f, uint32_t *g)
+{
+	if (i < 16)
+	{
+		*f = (t->b & t->c) | ((~t->b) & t->d);
+		*g = i;
+	}
+	else if (i < 32)
+	{
+		*f = (t->d & t->b) | ((~t->d) & t->c);
+		*g = (5 * i + 1) % 16;
+	}
+	else if (i < 48)
+	{
+		*f = t->b ^ t->c ^ t->d;
+		*g = (3 * i + 5) % 16;
+	}
+	else
+	{
+		*f = t->c ^ (t->b | (~t->d));
+		*g = (7 * i) % 16;
+	}
+}
 
-		// Initialize hash value for this chunk:
-		uint32_t a = h.a;
-		uint32_t b = h.b;
-		uint32_t c = h.c;
-		uint32_t d = h.d;
+static void			loop(struct s_uint128 *t, uint32_t *w)
+{
+	uint32_t i;
+	uint32_t f;
+	uint32_t g;
+	uint32_t tmp;
 
-		// Main loop:
-		uint32_t i;
-		for(i = 0; i<64; i++) {
-			uint32_t f, g;
+	i = 0;
+	while (i < 64)
+	{
+		assign(t, i, &f, &g);
+		tmp = t->d;
+		t->d = t->c;
+		t->c = t->b;
+		t->b = t->b + LEFTROTATE((t->a + f + k[i] + w[g]), r[i]);
+		t->a = tmp;
+		i++;
+	}
+}
 
-			if (i < 16) {
-				f = (b & c) | ((~b) & d);
-				g = i;
-			} else if (i < 32) {
-				f = (d & b) | ((~d) & c);
-				g = (5*i + 1) % 16;
-			} else if (i < 48) {
-				f = b ^ c ^ d;
-				g = (3*i + 5) % 16;
-			} else {
-				f = c ^ (b | (~d));
-				g = (7*i) % 16;
-			}
+t_uint128			md5_hash(uint8_t *initial_msg, size_t initial_len)
+{
+	uint8_t				*msg;
+	size_t				new_len;
+	size_t				offset;
+	uint32_t			*w;
+	struct s_uint128	t;
 
-			uint32_t temp = d;
-			d = c;
-			c = b;
-			b = b + LEFTROTATE((a + f + k[i] + w[g]), r[i]);
-			a = temp;
-		}
-		h.a += a;
-		h.b += b;
-		h.c += c;
-		h.d += d;
+	msg = setup(initial_msg, initial_len, &new_len);
+	offset = 0;
+	while (offset < new_len)
+	{
+		w = (uint32_t *)(msg + offset);
+		t.a = h.a;
+		t.b = h.b;
+		t.c = h.c;
+		t.d = h.d;
+		loop(&t, w);
+		h.a += t.a;
+		h.b += t.b;
+		h.c += t.c;
+		h.d += t.d;
+		offset += (512 / 8);
 	}
 	free(msg);
 	return (h);
 }
-

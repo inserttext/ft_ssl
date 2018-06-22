@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/08 13:35:59 by tingo             #+#    #+#             */
-/*   Updated: 2018/06/19 20:46:52 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/21 21:32:09 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@ struct s_uint128
 };
 typedef struct s_uint128	t_uint128;
 
-void	enqueue(struct s_queue *list, char *data);
-void	dequeue(struct s_queue *list);
+void		enqueue(struct s_queue *list, char *data);
+void		dequeue(struct s_queue *list);
+
+t_uint128	md5_hash(uint8_t *initial_msg, size_t initial_len);
 
 #endif
