@@ -6,29 +6,32 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 10:38:20 by tingo             #+#    #+#             */
-/*   Updated: 2018/06/19 15:01:39 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/22 11:46:56 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ssl.h"
 
-char	*ssl_getline(int fd)
+size_t	ssl_getline(int fd, char **dst)
 {
-	char *dst;
-	char *buf;
-	char *tmp;
+	char	*tmp;
+	char	*buf;
+	size_t	size;
+	size_t	rsze;
 
-	dst = (char *)ft_calloc(sizeof(char));
+	size = 0;
+	*dst = malloc(1);
 	buf = ft_strnew(g_bufsize);
-	while (read(fd, buf, g_bufsize) > 0)
+	while ((rsze = read(fd, buf, g_bufsize)) > 0)
 	{
-		tmp = dst;
-		dst = ft_strjoin(dst, buf);
+		tmp = *dst;
+		*dst = ft_memjoin(*dst, size, buf, rsze);
 		free(tmp);
 		ft_bzero(buf, g_bufsize);
+		size += rsze;
 	}
 	free(buf);
-	return (dst);
+	return (size);
 }
 
 int		ssl_open(char *file, int flags, mode_t mode, char *cmd)

@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 01:25:52 by tingo             #+#    #+#             */
-/*   Updated: 2018/06/19 14:16:38 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/22 10:43:44 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		ssl_strategy(char **cmd);
 */
 
 int		ssl_open(char *file, int flags, mode_t mode, char *f);
-char	*ssl_getline(int fd);
+size_t	ssl_getline(int fd, char **data);
 
 /*
 ** Error

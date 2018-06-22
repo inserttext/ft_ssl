@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 15:32:32 by tingo             #+#    #+#             */
-/*   Updated: 2018/06/22 02:43:28 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/22 11:33:46 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,6 @@ static const uint32_t k[] = {
 	0x655b59c3, 0x8f0ccc92, 0xffeff47d, 0x85845dd1,
 	0x6fa87e4f, 0xfe2ce6e0, 0xa3014314, 0x4e0811a1,
 	0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391
-};
-
-struct s_uint128 h = {
-	0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476
 };
 
 static uint8_t		*setup(
@@ -114,19 +110,19 @@ t_uint128			md5_hash(uint8_t *initial_msg, size_t initial_len)
 	uint8_t				*msg;
 	size_t				new_len;
 	size_t				offset;
-	uint32_t			*w;
+	struct s_uint128	h;
 	struct s_uint128	t;
 
+	h.a = 0x67452301;
+	h.b = 0xefcdab89;
+	h.c = 0x98badcfe;
+	h.d = 0x10325476;
 	msg = setup(initial_msg, initial_len, &new_len);
 	offset = 0;
 	while (offset < new_len)
 	{
-		w = (uint32_t *)(msg + offset);
-		t.a = h.a;
-		t.b = h.b;
-		t.c = h.c;
-		t.d = h.d;
-		loop(&t, w);
+		t = h;
+		loop(&t, (uint32_t *)(msg + offset));
 		h.a += t.a;
 		h.b += t.b;
 		h.c += t.c;

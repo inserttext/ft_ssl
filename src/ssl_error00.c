@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 01:11:10 by tingo             #+#    #+#             */
-/*   Updated: 2018/06/18 19:06:54 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/22 10:55:37 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	ssl_invalidin(char *file, char *cmd)
 	ft_fprintf(STDERR_FILENO,
 			"%s: Cannot open input file %s, No such file or directory\n"
 			"%s: Use -help for summary.\n", cmd, file, cmd);
-	exit(0);
 }
 
 void	ssl_invalidout(char *file, char *cmd)
@@ -46,5 +45,4 @@ void	ssl_invalidout(char *file, char *cmd)
 	ft_fprintf(STDERR_FILENO,
 			"%s: Cannot open output file %s, No such file or directory\n"
 			"%s: Use -help for summary.\n", cmd, file, cmd);
-	exit(0);
 }

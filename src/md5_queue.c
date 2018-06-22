@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:10:50 by tingo             #+#    #+#             */
-/*   Updated: 2018/06/19 14:22:27 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/22 10:32:28 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	enqueue(struct s_queue *list, char *data)
 		new->data = data;
 		if (!list->head)
 			list->head = new;
+		else
+			list->head->next = new;
 		list->tail = new;
 	}
 }
@@ -37,6 +39,6 @@ void	dequeue(struct s_queue *list)
 		free(list->head);
 		list->head = tmp;
 	}
-	if (list->head)
+	if (!list->head)
 		list->tail = 0;
 }
