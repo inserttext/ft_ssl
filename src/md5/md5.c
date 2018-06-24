@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/08 13:15:03 by tingo             #+#    #+#             */
-/*   Updated: 2018/06/22 22:28:35 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/24 15:18:16 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,22 @@ static void	print(struct s_uint128 sum, uint32_t flags, char *str)
 
 	lol = (uint8_t *)&sum;
 	if (!(flags & QIT) && !(flags & RVR))
-			ft_fprintf(g_fdout,flags & STR ? ("MD5(\"%s\")= ") :
-											("MD5(%s)= "), str);
+		ft_fprintf(g_fdout, flags & STR ? ("MD5(\"%s\")= ") :
+				("MD5(%s)= "), str);
 	ft_printf(
-		"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
-		lol[0], lol[1], lol[2], lol[3], lol[4], lol[5], lol[6], lol[7],
-		lol[8], lol[9], lol[10], lol[11], lol[12], lol[13], lol[14], lol[15]);
+			"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
+			lol[0], lol[1], lol[2], lol[3], lol[4], lol[5], lol[6], lol[7],
+			lol[8], lol[9], lol[10], lol[11], lol[12], lol[13], lol[14],
+			lol[15]);
 	if (!(flags & QIT) && (flags & RVR))
-			ft_fprintf(g_fdout,flags & STR ? (" \"%s\"") : (" %s"), str);
+		ft_fprintf(g_fdout, flags & STR ? (" \"%s\"") : (" %s"), str);
 	write(g_fdout, "\n", 1);
 }
 
 static void	print_args(struct s_queue pnd, char **arg, uint32_t flag)
 {
-	char *data;
-	size_t size;
+	char	*data;
+	size_t	size;
 
 	while (pnd.head)
 	{

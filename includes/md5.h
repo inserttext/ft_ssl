@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/08 13:35:59 by tingo             #+#    #+#             */
-/*   Updated: 2018/06/22 12:29:56 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/24 15:20:36 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define FLAG_MASK (SIN|QIT|RVR|STR)
 # define LEFTROTATE(x,c) (((x)<<(c))|((x)>>(32-(c))))
 
-struct s_uint128
+struct		s_uint128
 {
 	uint32_t	a;
 	uint32_t	b;

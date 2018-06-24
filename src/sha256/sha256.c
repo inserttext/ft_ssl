@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/08 13:15:03 by tingo             #+#    #+#             */
-/*   Updated: 2018/06/24 03:26:42 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/24 15:18:57 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,20 @@ static int	sh256_parse_arg(char ***arg, char **data, uint32_t *flag)
 void		print(t_uint256 sum, uint32_t flags, char *str)
 {
 	if (!(flags & QIT) && !(flags & RVR))
-			ft_fprintf(g_fdout,flags & STR ? ("SHA256(\"%s\")= ") :
-											("SHA256(%s)= "), str);
+		ft_fprintf(g_fdout, flags & STR ? ("SHA256(\"%s\")= ") :
+				("SHA256(%s)= "), str);
 	ft_printf(
-		"%08x%08x%08x%08x%08x%08x%08x%08x",
-		sum[0], sum[1], sum[2], sum[3], sum[4], sum[5], sum[6], sum[7]);
+			"%08x%08x%08x%08x%08x%08x%08x%08x",
+			sum[0], sum[1], sum[2], sum[3], sum[4], sum[5], sum[6], sum[7]);
 	if (!(flags & QIT) && (flags & RVR))
-			ft_fprintf(g_fdout,flags & STR ? (" \"%s\"") : (" %s"), str);
+		ft_fprintf(g_fdout, flags & STR ? (" \"%s\"") : (" %s"), str);
 	write(g_fdout, "\n", 1);
 }
 
 static void	print_args(struct s_queue pnd, char **arg, uint32_t flag)
 {
-	char *data;
-	size_t size;
+	char	*data;
+	size_t	size;
 
 	while (pnd.head)
 	{

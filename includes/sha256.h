@@ -6,12 +6,12 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/08 13:35:59 by tingo             #+#    #+#             */
-/*   Updated: 2018/06/24 03:21:55 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/24 15:23:09 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MD5_H
-# define MD5_H
+#ifndef SHA256_H
+# define SHA256_H
 
 # include "ft_ssl.h"
 
@@ -30,22 +30,9 @@
 # define SIG0(x) (RR(x,7U)^RR(x,18U)^((x)>>3U))
 # define SIG1(x) (RR(x,17U)^RR(x,19U)^((x)>>10U))
 
-struct	s_uint256
-{
-	uint32_t	a;
-	uint32_t	b;
-	uint32_t	c;
-	uint32_t	d;
-	uint32_t	e;
-	uint32_t	f;
-	uint32_t	g;
-	uint32_t	h;
-};
-/* typedef struct s_uint256	t_uint256; */
+typedef uint32_t	t_uint256 __attribute__((vector_size(32)));
 
-typedef uint32_t t_uint256 __attribute__ ((vector_size (32)));
-
-struct	s_sha
+struct		s_sha
 {
 	uint8_t		*msg;
 	uint32_t	w[64];
@@ -55,14 +42,7 @@ struct	s_sha
 	size_t		offset;
 	t_uint256	h[2];
 };
-typedef struct s_sha t_sha;
-
-typedef struct {
-	uint8_t	data[64];
-	uint32_t datalen;
-	uint64_t bitlen;
-	uint32_t state[8];
-} SHA256_CTX;
+typedef struct s_sha	t_sha;
 
 t_uint256	sha256_hash(uint8_t *initial_msg, size_t initial_len);
 

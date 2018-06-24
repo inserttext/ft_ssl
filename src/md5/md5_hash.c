@@ -6,13 +6,13 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 15:32:32 by tingo             #+#    #+#             */
-/*   Updated: 2018/06/24 02:50:20 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/24 15:19:30 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/md5.h"
 
-static const uint32_t r[] = {
+static const uint32_t g_r[] = {
 	7, 12, 17, 22, 7, 12, 17, 22,
 	7, 12, 17, 22, 7, 12, 17, 22,
 	5, 9, 14, 20, 5, 9, 14, 20,
@@ -23,7 +23,7 @@ static const uint32_t r[] = {
 	6, 10, 15, 21, 6, 10, 15, 21
 };
 
-static const uint32_t k[] = {
+static const uint32_t g_k[] = {
 	0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee,
 	0xf57c0faf, 0x4787c62a, 0xa8304613, 0xfd469501,
 	0x698098d8, 0x8b44f7af, 0xffff5bb1, 0x895cd7be,
@@ -99,7 +99,7 @@ static void			loop(struct s_uint128 *t, uint32_t *w)
 		tmp = t->d;
 		t->d = t->c;
 		t->c = t->b;
-		t->b = t->b + LEFTROTATE((t->a + f + k[i] + w[g]), r[i]);
+		t->b = t->b + LEFTROTATE((t->a + f + g_k[i] + w[g]), g_r[i]);
 		t->a = tmp;
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 01:25:52 by tingo             #+#    #+#             */
-/*   Updated: 2018/06/22 12:30:11 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/24 15:21:10 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ struct	s_node
 };
 typedef struct s_node	t_node;
 
-struct s_queue
+struct	s_queue
 {
 	struct s_node *head;
 	struct s_node *tail;
 };
 typedef struct s_queue	t_queue;
 
-void		enqueue(struct s_queue *list, char *data);
-void		dequeue(struct s_queue *list);
+void	enqueue(struct s_queue *list, char *data);
+void	dequeue(struct s_queue *list);
 
 int		g_fdin;
 int		g_fdout;

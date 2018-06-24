@@ -6,13 +6,13 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 15:32:32 by tingo             #+#    #+#             */
-/*   Updated: 2018/06/24 03:23:35 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/24 15:15:41 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/sha256.h"
 
-static uint32_t const k[64] = {
+static uint32_t const g_k[64] = {
 	0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5,
 	0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
 	0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3,
@@ -48,11 +48,11 @@ static void	setup(t_sha *var, uint8_t *initial_msg, size_t initial_len)
 	uint64_t	bl;
 
 	var->h[0] = (t_uint256){0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a,
-							0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19};
+		0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19};
 	var->offset = 0;
 	var->new_len = initial_len * 8 + 1;
 	var->new_len += var->new_len % 512 < 448 ? 448 - var->new_len % 512 :
-									(512 - (var->new_len % 512)) + 448;
+		(512 - (var->new_len % 512)) + 448;
 	var->new_len /= 8;
 	var->msg = (uint8_t *)ft_calloc(sizeof(uint8_t) * (var->new_len + 64));
 	ft_memcpy(var->msg, initial_msg, initial_len);
@@ -73,38 +73,38 @@ static void	extend(t_sha *p)
 	while (i < 16)
 	{
 		p->w[i] = (p->msg[j] << 24U) | (p->msg[j + 1] << 16U) |
-					(p->msg[j + 2] << 8U) | (p->msg[j + 3]);
+			(p->msg[j + 2] << 8U) | (p->msg[j + 3]);
 		i++;
 		j += 4;
 	}
 	while (i < 64)
 	{
 		p->w[i] = SIG1(p->w[i - 2]) + p->w[i - 7] +
-					SIG0(p->w[i - 15]) + p->w[i - 16];
+			SIG0(p->w[i - 15]) + p->w[i - 16];
 		i++;
 	}
 }
 
-static void compression(t_sha *p)
+static void	compression(t_sha *p)
 {
-	size_t i;
-	uint32_t t1;
-	uint32_t t2;
+	size_t		i;
+	uint32_t	t1;
+	uint32_t	t2;
 
 	i = 0;
 	while (i < 64)
 	{
-        t1 = p->h[1][7] + EP1(p->h[1][4]) +
-				CH(p->h[1][4], p->h[1][5], p->h[1][6]) + k[i] + p->w[i];
+		t1 = p->h[1][7] + EP1(p->h[1][4]) +
+			CH(p->h[1][4], p->h[1][5], p->h[1][6]) + g_k[i] + p->w[i];
 		t2 = EP0(p->h[1][0]) + MAJ(p->h[1][0], p->h[1][1], p->h[1][2]);
-        p->h[1][7] = p->h[1][6];
-        p->h[1][6] = p->h[1][5];
-        p->h[1][5] = p->h[1][4];
-        p->h[1][4] = p->h[1][3] + t1;
-        p->h[1][3] = p->h[1][2];
-        p->h[1][2] = p->h[1][1];
-        p->h[1][1] = p->h[1][0];
-        p->h[1][0] = t1 + t2;
+		p->h[1][7] = p->h[1][6];
+		p->h[1][6] = p->h[1][5];
+		p->h[1][5] = p->h[1][4];
+		p->h[1][4] = p->h[1][3] + t1;
+		p->h[1][3] = p->h[1][2];
+		p->h[1][2] = p->h[1][1];
+		p->h[1][1] = p->h[1][0];
+		p->h[1][0] = t1 + t2;
 		i++;
 	}
 }
