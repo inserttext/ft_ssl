@@ -6,11 +6,11 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 15:32:32 by tingo             #+#    #+#             */
-/*   Updated: 2018/06/22 11:33:46 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/24 02:50:20 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/md5.h"
+#include "../../includes/md5.h"
 
 static const uint32_t r[] = {
 	7, 12, 17, 22, 7, 12, 17, 22,
@@ -46,7 +46,7 @@ static uint8_t		*setup(
 		uint8_t *initial_msg, size_t initial_len, size_t *new_len)
 {
 	uint8_t		*msg;
-	uint32_t	bits_len;
+	uint64_t	bits_len;
 
 	*new_len = initial_len * 8 + 1;
 	*new_len += *new_len % 512 < 448 ? 448 - *new_len % 512 :
@@ -56,7 +56,7 @@ static uint8_t		*setup(
 	ft_memcpy(msg, initial_msg, initial_len);
 	msg[initial_len] = 0x80;
 	bits_len = 8 * initial_len;
-	ft_memcpy(msg + *new_len, &bits_len, 4);
+	ft_memcpy(msg + *new_len, &bits_len, 8);
 	return (msg);
 }
 
@@ -127,7 +127,7 @@ t_uint128			md5_hash(uint8_t *initial_msg, size_t initial_len)
 		h.b += t.b;
 		h.c += t.c;
 		h.d += t.d;
-		offset += (512 / 8);
+		offset += 64;
 	}
 	free(msg);
 	return (h);

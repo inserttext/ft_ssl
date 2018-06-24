@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 23:46:10 by tingo             #+#    #+#             */
-/*   Updated: 2018/06/18 19:06:19 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/22 12:05:30 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	help(char **arg)
 			"Standard Commands:\n"
 			"\n"
 			"Message Digest Commands:\n"
+			"md5\n"
+			"sha256\n"
 			"\n"
 			"Cipher Commands:\n"
 			"base64\n");

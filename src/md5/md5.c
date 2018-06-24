@@ -6,11 +6,11 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/08 13:15:03 by tingo             #+#    #+#             */
-/*   Updated: 2018/06/22 11:48:59 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/22 22:28:35 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/md5.h"
+#include "../../includes/md5.h"
 
 static int	md5_parse_arg(char ***arg, char **data, uint32_t *flag)
 {
@@ -26,7 +26,10 @@ static int	md5_parse_arg(char ***arg, char **data, uint32_t *flag)
 				if (*(++*arg))
 					*data = **arg;
 				else
-					exit(0); /* TODO: make a function for this case */
+				{
+					ft_fprintf(STDERR_FILENO, "MD5: No input provided");
+					exit(0);
+				}
 				return (1);
 			}
 		}
@@ -35,7 +38,7 @@ static int	md5_parse_arg(char ***arg, char **data, uint32_t *flag)
 	return (0);
 }
 
-void		print(struct s_uint128 sum, uint32_t flags, char *str)
+static void	print(struct s_uint128 sum, uint32_t flags, char *str)
 {
 	uint8_t *lol;
 
@@ -84,6 +87,8 @@ int			md5(char **arg)
 	char			*data;
 
 	flag = 0;
+	pnd.head = 0;
+	pnd.tail = 0;
 	while (md5_parse_arg(&arg, &data, &flag))
 		if (flag & STR)
 		{

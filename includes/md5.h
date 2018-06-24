@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/08 13:35:59 by tingo             #+#    #+#             */
-/*   Updated: 2018/06/22 11:31:58 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/22 12:29:56 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,6 @@
 # define FLAG_MASK (SIN|QIT|RVR|STR)
 # define LEFTROTATE(x,c) (((x)<<(c))|((x)>>(32-(c))))
 
-struct	s_node
-{
-	char			*data;
-	struct s_node	*next;
-};
-typedef struct s_node	t_node;
-
-struct s_queue
-{
-	struct s_node *head;
-	struct s_node *tail;
-};
-typedef struct s_queue	t_queue;
-
 struct s_uint128
 {
 	uint32_t	a;
@@ -45,9 +31,6 @@ struct s_uint128
 	uint32_t	d;
 };
 typedef struct s_uint128	t_uint128;
-
-void		enqueue(struct s_queue *list, char *data);
-void		dequeue(struct s_queue *list);
 
 t_uint128	md5_hash(uint8_t *initial_msg, size_t initial_len);
 

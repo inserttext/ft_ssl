@@ -6,7 +6,7 @@
 /*   By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 01:25:52 by tingo             #+#    #+#             */
-/*   Updated: 2018/06/22 10:43:44 by tingo            ###   ########.fr       */
+/*   Updated: 2018/06/22 12:30:11 by tingo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,23 @@ struct	s_fnx
 };
 typedef struct s_fnx	t_fnx;
 
+struct	s_node
+{
+	char			*data;
+	struct s_node	*next;
+};
+typedef struct s_node	t_node;
+
+struct s_queue
+{
+	struct s_node *head;
+	struct s_node *tail;
+};
+typedef struct s_queue	t_queue;
+
+void		enqueue(struct s_queue *list, char *data);
+void		dequeue(struct s_queue *list);
+
 int		g_fdin;
 int		g_fdout;
 size_t	g_bufsize;
@@ -33,6 +50,7 @@ size_t	g_bufsize;
 int		base64(char **arg);
 int		help(char **arg);
 int		md5(char **arg);
+int		sha256(char **arg);
 
 int		ssl_strategy(char **cmd);
 
