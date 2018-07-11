@@ -1,2 +1,8 @@
+md5:
+  - make it work on binaries
+sha256:
+  - work on large test cases
+base64:
+  - work on binaries
 des:
   - Add bare, ecb, and cbt versions
