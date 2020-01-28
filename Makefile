@@ -1,55 +1,49 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: tingo <tingo@student.42.us.org>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/03/03 23:52:47 by tingo             #+#    #+#              #
-#    Updated: 2018/06/24 03:29:09 by tingo            ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+CC        = gcc
+LD        = gcc
+CFLAGS    = -MMD -g3 -std=c11 -mavx
+CERR      = -Wall -Wextra
+CERR     += -Wshadow -Wdouble-promotion -Wundef -fno-common -Wconversion
+LFLAGS    =
+CERR     += -Werror
+BUILD_DIR = build
 
-CC     = gcc
-CFLAGS = -Wall -Werror -Wextra -std=c11 -mavx
-NAME   = ft_ssl
+INC     = -Iincludes -Ilibft/includes
+LIBS    = -Llibft -lft
 
-ODIR   = obj
-SDIR   = src
-LDIR   = libft
-IDIR   = includes
+MODULES = base64 md5 sha256
+SDIR    = src
+SDIR   += $(addprefix src/,$(MODULES))
+BDIR   = $(foreach sdir,$(SDIR),$(addprefix $(BUILD_DIR)/,$(sdir)/))
+SRC     = $(foreach sdir,$(SDIR),$(wildcard $(sdir)/*.c))
+OBJ     = $(SRC:%.c=$(BUILD_DIR)/%.o)
+DEP     = $(OBJ:%.o=%.d)
 
-_SRC   = ssl_error01.c \
-         ssl_error00.c \
-         ft_ssl.c \
-         help.c \
-         ssl_queue.c \
-         ssl_hashmap.c \
-         base64/base64.c \
-         base64/b64_decode.c \
-         base64/b64_encode.c \
-         md5/md5.c \
-         md5/md5_hash.c \
-         sha256/sha256_hash.c \
-         sha256/sha256.c \
-         ssl_utils.c
-SRC    = $(patsubst %,$(SDIR)/%,$(_SRC))
+all: ft_ssl
 
-_OBJ   = $(_SRC:.c=.o)
-OBJ    = $(patsubst %,$(ODIR)/%,$(_OBJ))
+%/:
+	mkdir -p $@
 
-all: $(NAME)
+libft.a:
+	make -C libft
 
-$(NAME):
-	@make re -C libft
-	@$(CC) $(CFLAGS) -o $(NAME) $(SRC) -I $(IDIR) -L $(LDIR) -lft
+ft_ssl: $(OBJ) | libft.a
+	$(LD) $(LFLAGS) -o $@ $^ $(LIBS)
+
+$(BUILD_DIR)/%.o: %.c | $(BDIR)
+	$(CC) $(CERR) $(CFLAGS) -c -o $@ $< $(INC)
+
+-include $(DEP)
+
+.PHONY: clean fclean re
 
 clean:
-	@/bin/rm -rf $(ODIR)
-	@echo remove $(ODIR)
+	make clean -C libft
+	rm -f $(OBJ)
+	rm -f $(DEP)
 
-fclean: clean
-	@/bin/rm -rf $(NAME)
-	@echo remove $(NAME)
+fclean:
+	make fclean -C libft
+	rm -rf $(BUILD_DIR)
+	rm -f $(NAME)
 
-re:	fclean all
+re: fclean all
